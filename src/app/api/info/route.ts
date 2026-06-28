@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import ytdl from '@distube/ytdl-core';
+import axios from 'axios';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -13,6 +14,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid YouTube URL' }, { status: 400 });
   }
 
+  // Attempt 1: Try ytdl-core (fast but prone to blocking on Vercel)
   try {
     const info = await ytdl.getInfo(url);
     const details = {
@@ -23,8 +25,34 @@ export async function GET(request: NextRequest) {
       url: url,
     };
     return NextResponse.json(details);
-  } catch (error) {
-    console.error('Error fetching video info:', error);
-    return NextResponse.json({ error: 'Failed to fetch video info' }, { status: 500 });
+  } catch (err: any) {
+    console.warn('ytdl-core failed, attempting fallback:', err.message);
   }
+
+  // Attempt 2: Use Cobalt API as a fallback for metadata
+  try {
+    const response = await axios.post('https://api.cobalt.tools/', {
+      url: url,
+      downloadMode: 'audio',
+    }, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
+
+    if (response.data && response.data.status !== 'error') {
+      return NextResponse.json({
+        title: response.data.filename || 'YouTube Track',
+        duration: 0,
+        thumbnail: `https://img.youtube.com/vi/${ytdl.getVideoID(url)}/0.jpg`,
+        author: 'YouTube',
+        url: url,
+      });
+    }
+  } catch (err: any) {
+    console.error('Fallback failed:', err.message);
+  }
+
+  return NextResponse.json({ error: 'Failed to fetch video info from all sources' }, { status: 500 });
 }

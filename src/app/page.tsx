@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Plus, Download, Loader2, Music } from 'lucide-react';
+import { Plus, Download, Loader2, Music, AlertTriangle } from 'lucide-react';
 import { TrackList } from '@/components/TrackList';
 import { mergeAudioFiles } from '@/lib/audio-utils';
 
@@ -13,6 +13,7 @@ interface Track {
   duration: number;
   author: string;
   url: string;
+  error?: string;
 }
 
 export default function Home() {
@@ -21,10 +22,12 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [merging, setMerging] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [error, setError] = useState<string | null>(null);
 
   const addTrack = async () => {
     if (!url) return;
     setLoading(true);
+    setError(null);
     try {
       const response = await axios.get(`/api/info?url=${encodeURIComponent(url)}`);
       const newTrack: Track = {
@@ -33,8 +36,9 @@ export default function Home() {
       };
       setTracks([...tracks, newTrack]);
       setUrl('');
-    } catch (error) {
-      alert('Failed to fetch video info. Make sure the URL is valid.');
+    } catch (err: any) {
+      const message = err.response?.data?.error || 'Failed to fetch video info. YouTube might be blocking the request.';
+      setError(message);
     } finally {
       setLoading(false);
     }
@@ -48,6 +52,12 @@ export default function Home() {
     if (tracks.length === 0) return;
     setMerging(true);
     setProgress(0);
+    setError(null);
+
+    // Reset track errors
+    const tracksWithResetErrors = tracks.map(t => ({ ...t, error: undefined }));
+    setTracks(tracksWithResetErrors);
+
     try {
       const urls = tracks.map(t => t.url);
       const blob = await mergeAudioFiles(urls, (p) => setProgress(p));
@@ -60,19 +70,22 @@ export default function Home() {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(downloadUrl);
-    } catch (error) {
-      console.error(error);
-      alert('Error merging tracks. Please try again.');
+    } catch (err: any) {
+      console.error(err);
+      setError('Error merging tracks. Some tracks might be unavailable or protected.');
+
+      // If we could identify which track failed, we would mark it here.
+      // Since mergeAudioFiles throws on the first fail, we can't easily mark multiple.
     } finally {
       setMerging(false);
     }
   };
 
   return (
-    <main className="min-h-screen bg-black text-white p-4 md:p-8">
+    <main className="min-h-screen bg-black text-white p-4 md:p-8 font-sans">
       <div className="max-w-3xl mx-auto">
         <header className="mb-12 text-center">
-          <div className="inline-flex items-center justify-center p-3 bg-blue-600 rounded-2xl mb-4">
+          <div className="inline-flex items-center justify-center p-3 bg-blue-600 rounded-2xl mb-4 shadow-lg shadow-blue-900/20">
             <Music size={32} />
           </div>
           <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
@@ -100,6 +113,13 @@ export default function Home() {
               <span className="hidden sm:inline">Add Track</span>
             </button>
           </div>
+
+          {error && (
+            <div className="mt-4 p-3 bg-red-900/20 border border-red-900/50 rounded-xl flex items-center gap-3 text-red-400 text-sm">
+              <AlertTriangle size={18} className="flex-shrink-0" />
+              <p>{error}</p>
+            </div>
+          )}
         </div>
 
         <div className="space-y-6">
@@ -112,7 +132,7 @@ export default function Home() {
                 className="bg-green-600 hover:bg-green-700 disabled:bg-gray-700 text-white px-6 py-2 rounded-xl font-medium flex items-center gap-2 transition-all shadow-lg shadow-green-900/20"
               >
                 {merging ? <Loader2 className="animate-spin" size={20} /> : <Download size={20} />}
-                {merging ? `Merging ${Math.round(progress)}%` : 'Download MP3 Album'}
+                {merging ? `Processing ${Math.round(progress)}%` : 'Download MP3 Album'}
               </button>
             )}
           </div>
@@ -122,6 +142,12 @@ export default function Home() {
             onRemove={removeTrack}
             onReorder={setTracks}
           />
+
+          {tracks.length > 0 && (
+            <p className="text-center text-xs text-gray-500 mt-8">
+              Note: Processing happens in your browser. Large albums might take a moment.
+            </p>
+          )}
         </div>
       </div>
     </main>
