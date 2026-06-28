@@ -14,10 +14,19 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const stream = ytdl(url, {
+    // Basic options for better reliability
+    const options: ytdl.downloadOptions = {
       filter: 'audioonly',
       quality: 'highestaudio',
-    });
+      // Adding some headers might help with certain restrictions
+      requestOptions: {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        }
+      }
+    };
+
+    const stream = ytdl(url, options);
 
     // Convert the stream to a ReadableStream for the Response object
     const readable = new ReadableStream({
@@ -29,6 +38,7 @@ export async function GET(request: NextRequest) {
           controller.close();
         });
         stream.on('error', (err) => {
+          console.error('ytdl stream error:', err);
           controller.error(err);
         });
       },
@@ -41,10 +51,15 @@ export async function GET(request: NextRequest) {
       headers: {
         'Content-Type': 'audio/mpeg',
         'Content-Disposition': 'attachment; filename="audio.mp3"',
+        // Ensure no-cache to avoid issues with repeated downloads
+        'Cache-Control': 'no-store',
       },
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error streaming audio:', error);
-    return NextResponse.json({ error: 'Failed to stream audio' }, { status: 500 });
+    return NextResponse.json({
+      error: 'Failed to stream audio',
+      details: error.message
+    }, { status: 500 });
   }
 }

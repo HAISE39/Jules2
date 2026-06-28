@@ -29,47 +29,70 @@ export const mergeAudioFiles = async (
   });
 
   ffmpeg.on('progress', ({ progress }) => {
-    onProgress(progress * 100);
+    // We'll have multiple steps, so we scale the progress accordingly
+    // However, FFmpeg progress is per-command.
   });
 
-  const inputFiles: string[] = [];
+  const rawFiles: string[] = [];
+  const processedFiles: string[] = [];
 
-  // Download and write files to FFmpeg virtual FS
-  for (let i = 0; i < urls.length; i++) {
-    const filename = `input${i}.mp3`;
-    const response = await fetch(`/api/download?url=${encodeURIComponent(urls[i])}`);
-    if (!response.ok) throw new Error(`Failed to download track ${i + 1}`);
+  try {
+    // 1. Download and transcode each file to a standardized format
+    for (let i = 0; i < urls.length; i++) {
+      const rawFilename = `raw${i}.mp3`;
+      const processedFilename = `processed${i}.mp3`;
 
-    const arrayBuffer = await response.arrayBuffer();
-    await ffmpeg.writeFile(filename, new Uint8Array(arrayBuffer));
-    inputFiles.push(filename);
+      const response = await fetch(`/api/download?url=${encodeURIComponent(urls[i])}`);
+      if (!response.ok) throw new Error(`Failed to download track ${i + 1}`);
+
+      const arrayBuffer = await response.arrayBuffer();
+      await ffmpeg.writeFile(rawFilename, new Uint8Array(arrayBuffer));
+      rawFiles.push(rawFilename);
+
+      // Transcode to standard format to ensure compatibility for concatenation
+      // 44.1kHz, Stereo, 128k bitrate
+      await ffmpeg.exec([
+        '-i', rawFilename,
+        '-ar', '44100',
+        '-ac', '2',
+        '-b:a', '128k',
+        processedFilename
+      ]);
+      processedFiles.push(processedFilename);
+
+      // Update progress manually for the download/transcode part (0-80%)
+      onProgress(((i + 1) / urls.length) * 80);
+    }
+
+    // 2. Concatenate the standardized files
+    const concatList = processedFiles.map(file => `file '${file}'`).join('\n');
+    await ffmpeg.writeFile('concat.txt', concatList);
+
+    await ffmpeg.exec([
+      '-f', 'concat',
+      '-safe', '0',
+      '-i', 'concat.txt',
+      '-c', 'copy',
+      'output.mp3'
+    ]);
+
+    onProgress(100);
+
+    const data = await ffmpeg.readFile('output.mp3');
+
+    // Convert Uint8Array to Blob safely
+    const blob = new Blob([(data as Uint8Array) as any], { type: 'audio/mp3' });
+
+    return blob;
+  } finally {
+    // Cleanup
+    for (const file of rawFiles) {
+      try { await ffmpeg.deleteFile(file); } catch (e) {}
+    }
+    for (const file of processedFiles) {
+      try { await ffmpeg.deleteFile(file); } catch (e) {}
+    }
+    try { await ffmpeg.deleteFile('concat.txt'); } catch (e) {}
+    try { await ffmpeg.deleteFile('output.mp3'); } catch (e) {}
   }
-
-  // Create a complex filter for concatenation
-  // or use the concat demuxer if they are all same format.
-  // Using concat demuxer approach:
-  const concatList = inputFiles.map(file => `file '${file}'`).join('\n');
-  await ffmpeg.writeFile('concat.txt', concatList);
-
-  await ffmpeg.exec([
-    '-f', 'concat',
-    '-safe', '0',
-    '-i', 'concat.txt',
-    '-c', 'copy',
-    'output.mp3'
-  ]);
-
-  const data = await ffmpeg.readFile('output.mp3');
-
-  // Convert Uint8Array to Blob safely, bypassing the SharedArrayBuffer type issue if it occurs
-  const blob = new Blob([(data as Uint8Array) as any], { type: 'audio/mp3' });
-
-  // Cleanup
-  for (const file of inputFiles) {
-    await ffmpeg.deleteFile(file);
-  }
-  await ffmpeg.deleteFile('concat.txt');
-  await ffmpeg.deleteFile('output.mp3');
-
-  return blob;
 };

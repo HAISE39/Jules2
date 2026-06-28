@@ -29,7 +29,7 @@ export default function Home() {
       const response = await axios.get(`/api/info?url=${encodeURIComponent(url)}`);
       const newTrack: Track = {
         ...response.data,
-        id: Math.random().toString(36).substr(2, 9),
+        id: Math.random().toString(36).substring(2, 11),
       };
       setTracks([...tracks, newTrack]);
       setUrl('');
