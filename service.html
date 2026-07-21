@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .services-container {
+            width: 100%;
+            min-height: 88vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .services-content {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px;
+            border-radius: 24px;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .services-header h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover {
+            background: rgba(187, 0, 255, 0.04);
+            border-color: rgba(187, 0, 255, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(187, 0, 255, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px var(--secondary-glow));
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .service-description {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            margin-top: auto;
+            font-size: 1.15rem;
+            color: var(--secondary);
+            font-weight: 700;
+            background: rgba(0, 242, 254, 0.1);
+            padding: 8px 15px;
+            border-radius: 30px;
+            display: inline-block;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .services-header h1 {
+                font-size: 2.2rem;
+            }
+            .services-content {
+                padding: 20px;
+            }
+        }
+    </style>
+    <title>Services - VELLIXAO OFFICIAL</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500" onclick="window.location.href='index.html'">
+                VELLIXAO <span>OFFICIAL</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="index.html">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="about.html">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="skill.html">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="web.html">Web</a></div>
+                <div class="link active" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="service.html">Service</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600"><a href="contact.html">Contact</a></div>
+            </div>
+        </div>
+        <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skill.html">Skills</a>
+                <a href="web.html">Web</a>
+                <a href="service.html">Service</a>
+                <a href="contact.html">Contact</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Grid Space -->
+    <div class="services-container">
+        <div class="services-content glass-card" data-aos="fade-up" data-aos-duration="1500">
+            <div class="services-header" data-aos="fade-down" data-aos-duration="1500">
+                <h1>My Services</h1>
+            </div>
+            <div class="services-grid">
+                <!-- Web Development -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="service-title">Web Development</h3>
+                    <p class="service-description">Custom responsive websites developed using modern frameworks. Blazing fast speeds, optimized SEO metrics, and smooth user paths.</p>
+                    <div>
+                        <span class="service-price">Starting at Rp499.000</span>
+                    </div>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="service-title">UI/UX Design</h3>
+                    <p class="service-description">User-centered premium designs built in Figma. Detailed wireframing, fluid visual components, and cohesive luxury brand styling.</p>
+                    <div>
+                        <span class="service-price">Starting at Rp399.000</span>
+                    </div>
+                </div>
+
+                <!-- Mobile App Development -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="service-title">Mobile Apps</h3>
+                    <p class="service-description">High performance cross-platform mobile apps. Smooth scrolling, interactive layouts, and fully optimized system processes.</p>
+                    <div>
+                        <span class="service-price">Starting at Rp799.000</span>
+                    </div>
+                </div>
+
+                <!-- Digital Marketing -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="service-title">Digital Marketing</h3>
+                    <p class="service-description">Strategic advertising and SEO optimization to elevate your digital products and reach massive potential leads.</p>
+                    <div>
+                        <span class="service-price">Starting at Rp299.000</span>
+                    </div>
+                </div>
+
+                <!-- Graphic Design -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="900">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="service-title">Graphic Design</h3>
+                    <p class="service-description">Stunning logos, banner overlays, and graphics designed to capture audience attention and establish a professional presence.</p>
+                    <div>
+                        <span class="service-price">Starting at Rp199.000</span>
+                    </div>
+                </div>
+
+                <!-- Consulting -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1100">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="service-title">IT Consulting</h3>
+                    <p class="service-description">Direct technology consultations. Outlining code architectures, system integrations, and optimal hosting frameworks.</p>
+                    <div>
+                        <span class="service-price">Starting at Rp149.000/hr</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Imports -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ offset: 0, once: true });
+    </script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
+<!-- Subscribe VELLIXAO OFFICIAL on YouTube -->
