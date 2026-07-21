@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>About - VELLIXAO OFFICIAL</title>
+</head>
+
+<body>
+
+    <div class="cyber-orb orb-1"></div>
+    <div class="cyber-orb orb-2"></div>
+    <div class="cyber-orb orb-3"></div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500" onclick="window.location.href='index.html'">
+                VELLIXAO <span>OFFICIAL</span>
+            </div>
+
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="index.html">Home</a></div>
+                <div class="link active" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="about.html">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="skill.html">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="web.html">Web</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="service.html">Service</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600"><a href="contact.html">Contact</a></div>
+            </div>
+        </div>
+
+        <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skill.html">Skills</a>
+                <a href="web.html">Web</a>
+                <a href="service.html">Service</a>
+                <a href="contact.html">Contact</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section Content -->
+    <section>
+        <div style="width: 100%; display: flex; flex-direction: column;">
+
+            <div class="section-header" data-aos="fade-down" data-aos-duration="1500">
+                <h2>About <span>Dossier</span></h2>
+                <p>Decrypting the technical experience, active achievements, and core operational values of VELLIXAO.</p>
+            </div>
+
+            <!-- Interative Tab Dossier Grid -->
+            <div class="dossier-grid">
+
+                <!-- Left: Dossier Selection Buttons -->
+                <div class="dossier-tabs" data-aos="fade-right" data-aos-duration="1500">
+                    <button class="tab-btn active" onclick="switchDossier(event, 'profile-pane')">
+                        <span><i class="fa-solid fa-user-check"></i> PROFILE STATUS</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <button class="tab-btn" onclick="switchDossier(event, 'experience-pane')">
+                        <span><i class="fa-solid fa-server"></i> PLATFORMS BUILT</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <button class="tab-btn" onclick="switchDossier(event, 'clients-pane')">
+                        <span><i class="fa-solid fa-users"></i> ACTIVE CLIENTS</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <button class="tab-btn" onclick="switchDossier(event, 'awards-pane')">
+                        <span><i class="fa-solid fa-trophy"></i> MILESTONES & AWARDS</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Right: Dossier Display Area -->
+                <div class="dossier-display cyber-panel" style="padding: 40px;" data-aos="fade-left" data-aos-duration="1500">
+
+                    <!-- Profile Pane -->
+                    <div id="profile-pane" class="dossier-panel active">
+                        <h3>OPERATIONAL <span>BIOGRAPHY</span></h3>
+                        <p>
+                            VELLIXAO is a dedicated software engineer specializing in responsive, highly polished front-end architectures and automated, high-scale digital solutions. Focus is on delivering zero-latency interfaces and high-performance backend automation systems.
+                        </p>
+                        <p>
+                            Utilizing state-of-the-art frameworks, the focus is placed on clean styling, elegant hover behaviors, and secure static form layouts.
+                        </p>
+                        <div class="stat-grid">
+                            <div class="stat-card cyber-panel">
+                                <h4>99.9%</h4>
+                                <p>UPTIME RATE</p>
+                            </div>
+                            <div class="stat-card cyber-panel">
+                                <h4>3+ Yrs</h4>
+                                <p>DEV EXP</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience Pane -->
+                    <div id="experience-pane" class="dossier-panel">
+                        <h3>PLATFORMS & <span>SYSTEMS</span></h3>
+                        <p>
+                            Extensive design experience ranging from single-page modern landing pages to high-traffic, multi-channel customer relations hubs. Specialized in constructing highly responsive glassmorphic cards, CSS-grid templates, and native canvas animations.
+                        </p>
+                        <p>
+                            Demonstrated excellence in delivering light, performance-oriented UI elements without reliance on heavy, memory-intensive packages.
+                        </p>
+                        <div class="stat-grid">
+                            <div class="stat-card cyber-panel">
+                                <h4>50+</h4>
+                                <p>WEBSITES BUILT</p>
+                            </div>
+                            <div class="stat-card cyber-panel">
+                                <h4>10+</h4>
+                                <p>CUSTOM AUTOMATIONS</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clients Pane -->
+                    <div id="clients-pane" class="dossier-panel">
+                        <h3>GLOBAL <span>RELATIONS</span></h3>
+                        <p>
+                            Cooperating actively with individual creators, premium software agencies, and local digital hubs to modernize their brand structures. Custom solutions are crafted for clients requiring high-security forms, integrated messaging APIs, and premium responsive web templates.
+                        </p>
+                        <div class="stat-grid">
+                            <div class="stat-card cyber-panel">
+                                <h4>100%</h4>
+                                <p>SATISFACTION RATE</p>
+                            </div>
+                            <div class="stat-card cyber-panel">
+                                <h4>24/7</h4>
+                                <p>OPERATIONAL SUPPORT</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Awards Pane -->
+                    <div id="awards-pane" class="dossier-panel">
+                        <h3>RECORDS & <span>MILESTONES</span></h3>
+                        <p>
+                            Highly rated individual software contributor in local and national developer forums. Successfully recognized for design consistency, modular codebase cleanliness, and high efficiency in mobile layouts.
+                        </p>
+                        <div class="stat-grid">
+                            <div class="stat-card cyber-panel">
+                                <h4>#1</h4>
+                                <p>DESIGN REVIEWS</p>
+                            </div>
+                            <div class="stat-card cyber-panel">
+                                <h4>Gold</h4>
+                                <p>INNOVATION BADGE</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ offset: 0, once: true });
+
+        // Simple and efficient tab switching script
+        function switchDossier(event, paneId) {
+            // Remove active classes from buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Remove active classes from panels
+            const panels = document.querySelectorAll('.dossier-panel');
+            panels.forEach(panel => panel.classList.remove('active'));
+
+            // Add active class to clicked button and target panel
+            event.currentTarget.classList.add('active');
+            document.getElementById(paneId).classList.add('active');
+        }
+    </script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
+<!-- Subscribe YouTube VELLIXAO OFFICIAL -->
