@@ -6,8 +6,8 @@ const gamesData = [
     rating: 4.8,
     players: "120K+",
     url: "https://s.g123.jp/5gyivbw4",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80",
-    banner: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1200&q=80",
+    image: "https://platform-ik.g123.jp/admin/2022/9/1663046486611.png",
+    banner: "https://platform-ik.g123.jp/admin/2022/9/1663047679278.png",
     description: "Pertarungan epik tanpa akhir melawan pasukan Goblin! Berdasarkan anime populer Goblin Slayer, pimpin petualang Anda, tingkatkan perlengkapan, dan selamatkan dunia dari kehancuran.",
     features: [
       "Sistem pertempuran otomatis yang adiktif",
@@ -23,13 +23,13 @@ const gamesData = [
     rating: 4.7,
     players: "95K+",
     url: "https://s.g123.jp/qq6z23ow",
-    image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=600&q=80",
-    banner: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728609325018.jpg",
     description: "Kumpulkan para prajurit cantik dari waralaba Queen's Blade legendaris! Susun formasi terbaik Anda, aktifkan sinergi skill, dan tantang batas Anda dalam petualangan RPG strategis yang mendebarkan.",
     features: [
       "Animasi karakter Live2D yang sangat halus",
       "Lebih dari 50 prajurit wanita cantik untuk dikoleksi",
-      "Sistem pertarungan taktis yang mendalam",
+      "Sistem pertempuran taktis yang mendalam",
       "Buka kostum premium eksklusif"
     ]
   },
@@ -40,8 +40,8 @@ const gamesData = [
     rating: 4.5,
     players: "80K+",
     url: "https://s.g123.jp/hn0uxbtf",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80",
-    banner: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
+    image: "https://g123.jp/news/calendar-date-range.svg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820555697.jpg",
     description: "Pria terkuat di dunia, Peter Grill, harus mempertahankan kehormatan dan benihnya dari godaan para gadis monster yang haus kekuasaan dalam game Tower Defense RPG strategis yang kocak ini!",
     features: [
       "Gameplay Tower Defense yang menantang dan adiktif",
@@ -57,8 +57,8 @@ const gamesData = [
     rating: 4.6,
     players: "110K+",
     url: "https://s.g123.jp/wuyqw73l",
-    image: "https://images.unsplash.com/photo-1516116211223-5c359a36298a?auto=format&fit=crop&w=600&q=80",
-    banner: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
     description: "Rasakan petualangan fantasi luar biasa bersama Rio di dunia lain! Kumpulkan sekutu-sekutu kuat, atur formasi pertempuran taktikal Anda, dan taklukkan naga legendaris.",
     features: [
       "Pengisi suara asli anime legendaris",
@@ -74,8 +74,8 @@ const gamesData = [
     rating: 4.9,
     players: "145K+",
     url: "https://s.g123.jp/g65quma6",
-    image: "https://images.unsplash.com/photo-1553481187-be93c21490a9?auto=format&fit=crop&w=600&q=80",
-    banner: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80",
+    image: "https://platform-ik.g123.jp/admin/2022/9/1663046486611.png",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728609325018.jpg",
     description: "Bantu Kumoko bertahan hidup dan mengeksplorasi labirin Elroe yang mematikan! Gunakan taktik jaring laba-laba unik untuk mengalahkan monster tangguh demi terus berevolusi.",
     features: [
       "Sistem evolusi monster yang sangat kompleks",
@@ -91,8 +91,8 @@ const gamesData = [
     rating: 4.7,
     players: "130K+",
     url: "https://s.g123.jp/nskvzgh5",
-    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=600&q=80",
-    banner: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
     description: "Ikuti kisah Hajime Nagumo yang berjuang dari titik terendah hingga menjadi sinergis terkuat di dunia! Transmutasikan berbagai artefak legendaris dan hadapi dungeon berbahaya bersama para gadis harem impian.",
     features: [
       "Visual ilustrasi eksklusif premium yang sangat artistik",
