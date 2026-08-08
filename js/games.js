@@ -1,6 +1,6 @@
 const gamesData = [
   {
-    id: "goblin-slayer",
+    id: "goblinslayer",
     title: "Goblin Slayer: Endless Hunting",
     genre: "RPG",
     rating: 4.8,
@@ -9,15 +9,10 @@ const gamesData = [
     image: "https://platform-ik.g123.jp/admin/2022/9/1663046486611.png",
     banner: "https://platform-ik.g123.jp/admin/2022/9/1663047679278.png",
     description: "Pertarungan epik tanpa akhir melawan pasukan Goblin! Berdasarkan anime populer Goblin Slayer, pimpin petualang Anda, tingkatkan perlengkapan, dan selamatkan dunia dari kehancuran.",
-    features: [
-      "Sistem pertempuran otomatis yang adiktif",
-      "Karakter asli anime dengan pengisi suara terkenal",
-      "Sistem guild dan pertempuran boss kooperatif",
-      "Pilihan kelas dan kustomisasi senjata legendaris"
-    ]
+    features: ["Sistem pertempuran otomatis", "Karakter asli anime", "Sistem guild kooperatif", "Pilihan senjata legendaris"]
   },
   {
-    id: "queens-blade",
+    id: "queensblade",
     title: "Queen's Blade Limit Break",
     genre: "RPG",
     rating: 4.7,
@@ -26,16 +21,11 @@ const gamesData = [
     image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
     banner: "https://platform-ik.g123.jp/admin/2024/10/1728609325018.jpg",
     description: "Kumpulkan para prajurit cantik dari waralaba Queen's Blade legendaris! Susun formasi terbaik Anda, aktifkan sinergi skill, dan tantang batas Anda dalam petualangan RPG strategis yang mendebarkan.",
-    features: [
-      "Animasi karakter Live2D yang sangat halus",
-      "Lebih dari 50 prajurit wanita cantik untuk dikoleksi",
-      "Sistem pertempuran taktis yang mendalam",
-      "Buka kostum premium eksklusif"
-    ]
+    features: ["Animasi karakter Live2D", "Lebih dari 50 prajurit wanita", "Sistem pertarungan taktis", "Buka kostum premium"]
   },
   {
-    id: "peter-grill",
-    title: "Peter Grill and the Philosopher's Time: Defender",
+    id: "peter",
+    title: "Peter Grill and the Philosopher's Time - Defender of Virtue 2",
     genre: "Strategy",
     rating: 4.5,
     players: "80K+",
@@ -43,15 +33,10 @@ const gamesData = [
     image: "https://g123.jp/news/calendar-date-range.svg",
     banner: "https://platform-ik.g123.jp/admin/2024/10/1729820555697.jpg",
     description: "Pria terkuat di dunia, Peter Grill, harus mempertahankan kehormatan dan benihnya dari godaan para gadis monster yang haus kekuasaan dalam game Tower Defense RPG strategis yang kocak ini!",
-    features: [
-      "Gameplay Tower Defense yang menantang dan adiktif",
-      "Gadis monster dengan keahlian unik",
-      "Cerita humoris yang diadaptasi dari serial anime",
-      "Upgrade markas pertahanan kustomisasi taktis"
-    ]
+    features: ["Gameplay Tower Defense", "Gadis monster unik", "Cerita humoris anime", "Upgrade markas pertahanan"]
   },
   {
-    id: "seirei-gensouki",
+    id: "seirei",
     title: "Seirei Gensouki: Spirit Chronicles - Another Tale",
     genre: "RPG",
     rating: 4.6,
@@ -60,16 +45,11 @@ const gamesData = [
     image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
     banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
     description: "Rasakan petualangan fantasi luar biasa bersama Rio di dunia lain! Kumpulkan sekutu-sekutu kuat, atur formasi pertempuran taktikal Anda, dan taklukkan naga legendaris.",
-    features: [
-      "Pengisi suara asli anime legendaris",
-      "Petualangan Isekai RPG fantasi spektakuler",
-      "Pertempuran kooperatif Raid Boss multipemain",
-      "Auto-battle yang memudahkan grinding harian"
-    ]
+    features: ["Pengisi suara asli anime", "Isekai RPG fantasi", "Pertarungan Raid Boss", "Sistem Auto-battle"]
   },
   {
-    id: "so-im-a-spider",
-    title: "So I'm a Spider, So What? Labyrinth",
+    id: "kumo",
+    title: "So I'm a Spider, So What? Ruler of the Labyrinth",
     genre: "RPG",
     rating: 4.9,
     players: "145K+",
@@ -77,15 +57,10 @@ const gamesData = [
     image: "https://platform-ik.g123.jp/admin/2022/9/1663046486611.png",
     banner: "https://platform-ik.g123.jp/admin/2024/10/1728609325018.jpg",
     description: "Bantu Kumoko bertahan hidup dan mengeksplorasi labirin Elroe yang mematikan! Gunakan taktik jaring laba-laba unik untuk mengalahkan monster tangguh demi terus berevolusi.",
-    features: [
-      "Sistem evolusi monster yang sangat kompleks",
-      "Elemen taktis pertahanan jaring laba-laba",
-      "Animasi imut yang terinspirasi langsung dari anime",
-      "Kumpulkan berbagai skill cheat yang kuat"
-    ]
+    features: ["Sistem evolusi monster", "Elemen taktis pertahanan", "Animasi imut anime", "Kumpulkan skill cheat"]
   },
   {
-    id: "arifureta",
+    id: "arifure",
     title: "Arifureta: From Commonplace to World's Strongest - Rebellion Soul",
     genre: "RPG",
     rating: 4.7,
@@ -94,12 +69,7 @@ const gamesData = [
     image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
     banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
     description: "Ikuti kisah Hajime Nagumo yang berjuang dari titik terendah hingga menjadi sinergis terkuat di dunia! Transmutasikan berbagai artefak legendaris dan hadapi dungeon berbahaya bersama para gadis harem impian.",
-    features: [
-      "Visual ilustrasi eksklusif premium yang sangat artistik",
-      "Sistem pembuatan & transmutasi artefak tempur",
-      "Alur petualangan isekai fantasi yang mendalam",
-      "Pertarungan tim dengan kombo elemen tak terbatas"
-    ]
+    features: ["Ilustrasi eksklusif premium", "Pembuatan artefak tempur", "Alur petualangan isekai", "Pertarungan tim tak terbatas"]
   },
   {
     id: "isesuma",
@@ -111,12 +81,7 @@ const gamesData = [
     image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
     banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
     description: "Nikmati petualangan seru di dunia lain bersama sembilan gadis kandidat istrimu dan smartphone andalanmu! Jelajahi berbagai kerajaan, selesaikan quest serikat, dan hadapi ancaman kuno.",
-    features: [
-      "Kumpulkan dan latih lebih dari 30 karakter anime",
-      "Petualangan Isekai penuh romansa dan humor mendalam",
-      "Otomatisasi pertempuran idle yang praktis",
-      "Kustomisasi Touya dengan gear, skin, dan sihir unik"
-    ]
+    features: ["Lebih dari 30 karakter anime", "Petualangan Isekai seru", "Otomatisasi pertempuran", "Kustomisasi Touya lengkap"]
   },
   {
     id: "hotd",
@@ -128,12 +93,7 @@ const gamesData = [
     image: "https://platform-ik.g123.jp/admin/2022/9/1663046486611.png",
     banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
     description: "Bertahan hidup dari kiamat zombie bersama Takashi dan kawan-kawan! Bangun benteng pertahanan terkuat, kumpulkan perbekalan, dan hancurkan setiap mayat hidup yang menghalangi.",
-    features: [
-      "Gameplay tower defense bertahan hidup yang menegangkan",
-      "Sistem upgrade benteng dan senjata modern",
-      "Karakter utama orisinal dari anime HOTD",
-      "Tantangan misi harian bertahan dari gelombang zombie"
-    ]
+    features: ["Gameplay tower defense HOTD", "Sistem upgrade benteng", "Karakter utama orisinal", "Tantangan misi zombie"]
   },
   {
     id: "ryoran",
@@ -145,12 +105,7 @@ const gamesData = [
     image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
     banner: "https://platform-ik.g123.jp/admin/2024/10/1728609325018.jpg",
     description: "Ikuti kisah Muneakira Yagyu di Akademi Buou bersama para Master Samurai cantik! Latih dan tingkatkan kemampuan para samurai wanita tangguh demi memenangkan perang legendaris.",
-    features: [
-      "Kumpulkan dan latih lebih dari 20 Master Samurai cantik",
-      "Pertarungan idle RPG yang cepat dan penuh aksi spektakuler",
-      "Hubungan romantis dan kedekatan khusus dengan samurai",
-      "Upgrade senjata legendaris dan perlengkapan khusus"
-    ]
+    features: ["Kumpulkan Master Samurai cantik", "Pertarungan cepat idle RPG", "Hubungan kedekatan khusus", "Upgrade senjata legendaris"]
   },
   {
     id: "kakegurui",
@@ -162,12 +117,7 @@ const gamesData = [
     image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
     banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
     description: "Masuki Akademi Swasta Hyakkaou dan pertaruhkan segalanya dalam game taktis psikologis paling menegangkan bersama Yumeko Jabami!",
-    features: [
-      "Pertarungan kartu strategi psikologis orisinal",
-      "Karakter anime Kakegurui bersuara asli lengkap",
-      "Turnamen peringkat kompetitif multipemain online",
-      "Animasi kemenangan yang luar biasa dramatis"
-    ]
+    features: ["Pertarungan kartu strategi", "Pengisi suara asli lengkap", "Peringkat kompetitif online", "Animasi kemenangan dramatis"]
   },
   {
     id: "highschool",
@@ -179,12 +129,7 @@ const gamesData = [
     image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
     banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
     description: "Bangun faksi iblis harem terkuat bersama Issei, Rias Gremory, dan Akeno! Manfaatkan sinergi skill istimewa untuk menguasai turnamen Tiga Kubu.",
-    features: [
-      "Lebih dari 60 karakter iblis seksi untuk direkrut",
-      "Karya seni galeri premium eksklusif dalam game",
-      "Interaksi kencan intensif untuk menaikkan kekuatan",
-      "Event kolaborasi musiman yang spektakuler"
-    ]
+    features: ["Lebih dari 60 iblis direkrut", "Karya seni galeri premium", "Interaksi kencan intensif", "Event kolaborasi musiman"]
   },
   {
     id: "kusuriya",
@@ -196,11 +141,318 @@ const gamesData = [
     image: "https://g123.jp/news/calendar-date-range.svg",
     banner: "https://platform-ik.g123.jp/admin/2024/10/1729820555697.jpg",
     description: "Pecahkan setiap misteri racun dan intrik istana kekaisaran bersama Maomao dan Jinshi dalam petualangan visual teka-teki logika yang sangat menawan!",
-    features: [
-      "Teka-teki penyusunan ramuan obat istana dalam",
-      "Cerita visual novel penuh misteri dan ketegangan",
-      "Interaksi manis nan jenaka antara Maomao dan Jinshi",
-      "Buka ilustrasi bab cerita premium khusus"
-    ]
+    features: ["Teka-teki ramuan obat istana", "Cerita visual novel misteri", "Interaksi Maomao dan Jinshi", "Buka bab cerita premium"]
+  },
+  {
+    id: "vividarmy",
+    title: "Vivid Army",
+    genre: "Strategy",
+    rating: 4.7,
+    players: "200K+",
+    url: "https://h5.g123.jp/game/vividarmy?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1728609325018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Hiasi dan kuasai medan perang! Gabungkan pasukan, kembangkan markas militer Anda, dan pimpin prajurit bishoujo cantik menuju kemenangan mutlak.",
+    features: ["Sistem merger unit inovatif", "Prajurit wanita bishoujo", "Aliansi klan global aktif", "Sistem pembangunan pangkalan"]
+  },
+  {
+    id: "dragon",
+    title: "Miss Kobayashi's Dragon Maid Fantasia",
+    genre: "RPG",
+    rating: 4.8,
+    players: "110K+",
+    url: "https://h5.g123.jp/game/dragon?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
+    description: "Sebuah RPG seru untuk memupuk kehangatan dan kasih sayang bersama Tohru, Kanna, dan Miss Kobayashi langsung di web browser Anda!",
+    features: ["Kisah komedi naga orisinal", "Sistem kedekatan mendalam", "Turn-based battle taktis", "Pengembangan kekuatan naga"]
+  },
+  {
+    id: "ginei",
+    title: "Legend of the Galactic Heroes: Rondo of War",
+    genre: "Strategy",
+    rating: 4.6,
+    players: "85K+",
+    url: "https://h5.g123.jp/game/ginei?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Tulis lembaran sejarah baru bagi pahlawan galaksi! Pimpin armada luar angkasa raksasa dan taklukkan bintang-bintang dalam game perang faksi yang epik ini.",
+    features: ["Pertempuran armada taktis", "Faksi Aliansi vs Imperium", "Sistem manajemen stasiun", "Karakter legendaris orisinal"]
+  },
+  {
+    id: "monmusu",
+    title: "Monster Musume Fantastic Life",
+    genre: "Simulation",
+    rating: 4.7,
+    players: "95K+",
+    url: "https://h5.g123.jp/game/monmusu?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728609325018.jpg",
+    description: "Jalani kehidupan manis yang sangat dekat dan personal bersama para gadis monster idaman Anda dalam RPG simulasi kencan santai!",
+    features: ["Gadis monster bervariasi", "Skenario kencan interaktif", "Sistem pembangunan rumah", "Interaksi sentuhan Live2D"]
+  },
+  {
+    id: "shinchan",
+    title: "Crayon Shinchan My Sugoroku Great Strategy",
+    genre: "Strategy",
+    rating: 4.5,
+    players: "75K+",
+    url: "https://h5.g123.jp/game/shinchan?lang=en",
+    image: "https://g123.jp/news/calendar-date-range.svg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820555697.jpg",
+    description: "Penuh dengan keceriaan anak-anak! Mainkan game papan Sugoroku buatan tangan bersama Shinchan, Shiro, dan seluruh keluarga Nohara.",
+    features: ["Sistem permainan papan seru", "Karakter penuh jenaka orisinal", "Mini-game adiktif menarik", "Kustomisasi pion dan dadu"]
+  },
+  {
+    id: "ansatsu",
+    title: "My Status as an Assassin Obviously Exceeds the Hero's: Shadow Break",
+    genre: "RPG",
+    rating: 4.8,
+    players: "112K+",
+    url: "https://h5.g123.jp/game/ansatsu?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Dibuang dari kerajaan, sang pembunuh terkuat Akira Oda berpetualang dan mengungkap konspirasi jahat di dunia fantasi isekai lain!",
+    features: ["Gaya bertarung stealth assassin", "Alur cerita konspirasi gelap", "Kustomisasi bayangan & senjata", "Pertarungan aksi dinamis"]
+  },
+  {
+    id: "yamato",
+    title: "Space Battleship Yamato: Voyagers of Tomorrow",
+    genre: "Strategy",
+    rating: 4.6,
+    players: "80K+",
+    url: "https://h5.g123.jp/game/yamato?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Anime legendaris Space Battleship Yamato akhirnya hadir di browser! Pimpin armada luar angkasa taktis dan jelajahi kosmos tak berujung.",
+    features: ["Manajemen armada kapal Yamato", "Pertarungan rasi bintang strategis", "Peningkatan teknologi meriam", "Petualangan luar angkasa epik"]
+  },
+  {
+    id: "shiguang",
+    title: "Tycoon Returner",
+    genre: "Simulation",
+    rating: 4.4,
+    players: "65K+",
+    url: "https://h5.g123.jp/game/shiguang?lang=en",
+    image: "https://g123.jp/news/calendar-date-range.svg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820555697.jpg",
+    description: "Kembali ke masa lalu dan jadilah taipan bisnis terkaya di dunia dengan membangun jaringan industri multinasional raksasa!",
+    features: ["Sistem simulasi ekonomi nyata", "Investasi pasar saham dinamis", "Pembangunan gedung pencakar langit", "Rekrutmen manajer profesional"]
+  },
+  {
+    id: "binan",
+    title: "Cute High Earth Defense Club Love Macho",
+    genre: "Simulation",
+    rating: 4.5,
+    players: "70K+",
+    url: "https://h5.g123.jp/game/binan?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
+    description: "Rasakan kekuatan cinta yang dahsyat bersama para pemuda tampan dari Klub Pertahanan Bumi dalam petualangan penuh warna!",
+    features: ["Interaksi visual novel manis", "Kostum transformasi glamor", "Logika mini-game seru", "Alur cerita komedi romantis"]
+  },
+  {
+    id: "blacklagoon",
+    title: "BLACK LAGOON Heaven's Shot",
+    genre: "RPG",
+    rating: 4.7,
+    players: "118K+",
+    url: "https://h5.g123.jp/game/blacklagoon?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Masuki kota kejahatan Roanapur! Bentuk kru tentara bayaran terkuat Anda bersama Revy, Rock, dan hancurkan mafia musuh dalam RPG aksi keras.",
+    features: ["Gaya baku tembak taktis keras", "Skenario kriminal orisinal", "Sistem rekrutmen kru tentara", "Peningkatan modifikasi senjata"]
+  },
+  {
+    id: "slime",
+    title: "I've Been Killing Slimes for 300 Years and Maxed Out My Level: Witchcraft",
+    genre: "RPG",
+    rating: 4.7,
+    players: "102K+",
+    url: "https://h5.g123.jp/game/slime?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
+    description: "Jalani kehidupan santai yang damai di dataran tinggi bersama Azusa sang penyihir tangguh, dan lindungi keluargamu dari gangguan naga legendaris!",
+    features: ["Pertarungan sihir dataran tinggi", "Kehidupan santai bertani obat", "Karakter anime orisinal lengkap", "Komposisi ramuan sihir unik"]
+  },
+  {
+    id: "negima",
+    title: "Negima! Magister Negi Magi - Mahora Panic",
+    genre: "RPG",
+    rating: 4.6,
+    players: "88K+",
+    url: "https://h5.g123.jp/game/negima?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
+    description: "Sihir sejati lahir dari keberanian hati! Bantu Negi Springfield membimbing para siswi Akademi Mahora yang ajaib dan hadapi musuh misterius.",
+    features: ["Kontrak sihir Pactio legendaris", "Pertarungan kelas sihir taktis", "Interaksi karakter siswi Mahora", "Petualangan RPG penuh fantasi"]
+  },
+  {
+    id: "tsukimichi",
+    title: "TSUKIMICHI -Moonlit Fantasy-: Peace Chronicles",
+    genre: "RPG",
+    rating: 4.8,
+    players: "135K+",
+    url: "https://h5.g123.jp/game/tsukimichi?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Ikuti perjalanan Makoto Misumi di dunia paralel yang kacau! Bangun kota Demiplane impianmu bersama Tomoe, Mio, dan taklukkan monster gurun liar.",
+    features: ["Pembangunan kota Demiplane", "Prajurit andalan Live2D unik", "Pertarungan aksi RPG fantasi", "Kombo sihir elemen dahsyat"]
+  },
+  {
+    id: "sutobura",
+    title: "Strike The Blood Daybreak",
+    genre: "RPG",
+    rating: 4.7,
+    players: "115K+",
+    url: "https://h5.g123.jp/game/sutobura?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
+    description: "Kisah sang Vampir Terkuat Kojou Akatsuki dan sang pengawas pedang Yukina Himeragi berlanjut dalam RPG aksi pertempuran faksi penuh misteri!",
+    features: ["Pemanggilan makhluk halus Beast", "Aksi pertarungan pedang taktis", "Skenario orisinal misteri pulau", "Relasi khusus pengawas pedang"]
+  },
+  {
+    id: "maoretry",
+    title: "Demon Lord, Retry! R Reborn",
+    genre: "RPG",
+    rating: 4.7,
+    players: "110K+",
+    url: "https://h5.g123.jp/game/maoretry?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Rebut kembali kekuatan sang Raja Iblis Hakuto Kunai! Bangun markas kekuasaanmu dan pimpin petualangan taktis mengumpulkan senjata legendaris.",
+    features: ["Pengumpulan senjata kustom", "Manajemen faksi raja iblis", "Turn-based battle RPG klasik", "Grafis pertempuran spektakuler"]
+  },
+  {
+    id: "auo",
+    title: "Reborn to Master the Blade: Bravery Road",
+    genre: "RPG",
+    rating: 4.6,
+    players: "92K+",
+    url: "https://h5.g123.jp/game/auo?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
+    description: "Ikuti kisah Inglis sang mantan kaisar perkasa yang bereinkarnasi sebagai gadis magang ksatria demi menguasai teknik pedang tertinggi di dunia!",
+    features: ["Pertarungan aksi pedang lincah", "Sistem rekrutmen ksatria elit", "Turnamen ksatria antariksa", "Otomatisasi taktis menantang"]
+  },
+  {
+    id: "tenken",
+    title: "Reincarnated as a Sword Brave Rush",
+    genre: "RPG",
+    rating: 4.8,
+    players: "125K+",
+    url: "https://h5.g123.jp/game/tenken?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Petualangan roguelike seru bersama gadis bertelinga bulu Fran dan pedang legendaris penyayang Guru di dungeon labirin berbahaya!",
+    features: ["Pertarungan roguelike acak", "Sinergi ikatan Fran & Guru", "Kombinasi skill pedang unik", "Sistem penggabungan elemen"]
+  },
+  {
+    id: "ossan",
+    title: "The Ossan Newbie Adventurer: Orichalcum Soul",
+    genre: "RPG",
+    rating: 4.7,
+    players: "108K+",
+    url: "https://h5.g123.jp/game/ossan?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Bukan masalah berapa usiamu saat memulai! Rick Gladiator, sang petualang pemula paruh baya yang terlatih mati-matian, kini menjadi tak terkalahkan!",
+    features: ["Sistem latihan orichalcum", "Skenario penuh komedi & aksi", "Pertarungan monster kolosal", "Turnamen pertarung dunia"]
+  },
+  {
+    id: "jya",
+    title: "Dropkick on My Devil!! Chaos",
+    genre: "RPG",
+    rating: 4.6,
+    players: "94K+",
+    url: "https://h5.g123.jp/game/jya?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Pertarungan kocak Jashin-chan melawan Yurine Hanazono baru saja dimulai dalam game RPG penuh kekacauan dan komedi ekstrem ini!",
+    features: ["Sistem serangan Jashin-kick", "Koleksi skin komedi lucu", "Mode klan kooperatif global", "Skenario kocak adaptasi anime"]
+  },
+  {
+    id: "got",
+    title: "Game of Thrones: Winter is Coming",
+    genre: "Strategy",
+    rating: 4.8,
+    players: "190K+",
+    url: "https://h5.g123.jp/game/got?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Kuasai Westeros dan rebut Tahta Besi! Bangun kastil megah, kembangkan naga tempur raksasa, dan atur strategi militer aliansi klan terbaik Anda.",
+    features: ["Koleksi komandan legendaris GOT", "Pertempuran taktis waktu nyata", "Pelihara dan latih naga tempur", "Diplomasi aliansi klan luas"]
+  },
+  {
+    id: "lv2",
+    title: "Chillin' in Another World with Level 2 Super Cheat Powers Reverse Dive",
+    genre: "RPG",
+    rating: 4.7,
+    players: "115K+",
+    url: "https://h5.g123.jp/game/lv2?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Nikmati kehidupan pengantin baru yang sangat santai sekaligus penuh kekacauan bersama Fenrys yang cantik di dunia fantasi isekai lain!",
+    features: ["Interaksi pengantin Live2D imut", "Logika sihir cheat tingkat dua", "Pembangunan rumah impian asri", "Sistem petualangan idle santai"]
+  },
+  {
+    id: "wixoss",
+    title: "WIXOSS Multiverse",
+    genre: "RPG",
+    rating: 4.6,
+    players: "85K+",
+    url: "https://h5.g123.jp/game/wixoss?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Para bintang WIXOSS bersatu! Atur deck kartu taktis Anda, aktifkan kombinasi kartu sinergis, dan taklukkan pertempuran kartu dunia paralel.",
+    features: ["Sistem koleksi kartu WIXOSS", "Kombo kartu taktis bervariasi", "Pertarungan turnamen PVP online", "Animasi spesial kartu premium"]
+  },
+  {
+    id: "peachboy",
+    title: "Peach Boy Riverside Battle Saga",
+    genre: "Strategy",
+    rating: 4.4,
+    players: "60K+",
+    url: "https://h5.g123.jp/game/peachboy?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Bangun kota impian Anda dan gabungkan kekuatan manusia, iblis, serta demi-human demi memenangkan pertempuran saga yang spektakuler!",
+    features: ["Sistem tata kota kustomisasi", "Faksi pertarungan tiga ras", "Pahlawan orisinal anime hebat", "Event perang klan terpadu"]
+  },
+  {
+    id: "prison",
+    title: "Prison Noctis",
+    genre: "Puzzle",
+    rating: 4.5,
+    players: "70K+",
+    url: "https://h5.g123.jp/game/prison?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Pecahkan teka-teki logika labirin paling rumit dan bantu para tahanan kabur dengan selamat dari penjara malam yang super ketat!",
+    features: ["Teka-teki logika pelarian rumit", "Tingkatan lantai penjara unik", "Mini-game mekanika fisika", "Gaya seni komik misterius"]
+  },
+  {
+    id: "doraemon",
+    title: "Doraemon Comic Traveler",
+    genre: "Strategy",
+    rating: 4.8,
+    players: "150K+",
+    url: "https://h5.g123.jp/game/doraemon?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Ayo berpetualang ke planet komik misterius tak dikenal bersama Doraemon, Nobita, Shizuka, dan segenap alat ajaib masa depan yang mengagumkan!",
+    features: ["Koleksi alat ajaib Doraemon", "Peta petualangan planet komik", "Skenario petualangan hangat ramah", "Teka-teki pemecahan rintangan"]
+  },
+  {
+    id: "guruguru",
+    title: "Magical Circle Guru-Guru: Stardust Adventure",
+    genre: "RPG",
+    rating: 4.7,
+    players: "98K+",
+    url: "https://h5.g123.jp/game/guruguru?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Ayo bertemu kembali di petualangan luar biasa seperti dulu! Nikmati perjalanan RPG sihir penuh kelucuan tak terduga bersama Nike dan Kukuri.",
+    features: ["Sistem gambar lingkaran sihir", "Kisah petualangan klasik lucu", "Sistem pertempuran taktis santai", "Upgrade kekuatan magis Kukuri"]
   }
 ];
