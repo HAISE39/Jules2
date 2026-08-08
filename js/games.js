@@ -454,5 +454,89 @@ const gamesData = [
     banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
     description: "Ayo bertemu kembali di petualangan luar biasa seperti dulu! Nikmati perjalanan RPG sihir penuh kelucuan tak terduga bersama Nike dan Kukuri.",
     features: ["Sistem gambar lingkaran sihir", "Kisah petualangan klasik lucu", "Sistem pertempuran taktis santai", "Upgrade kekuatan magis Kukuri"]
+  },
+  {
+    id: "kingofprism",
+    title: "KING OF PRISM Sparkling",
+    genre: "Simulation",
+    rating: 4.6,
+    players: "80K+",
+    url: "https://h5.g123.jp/game/kingofprism?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Cahaya Prism selalu bersamamu! Latih para idola muda berbakat, rancang koreografi panggung yang memukau, dan menangkan turnamen menyanyi legendaris.",
+    features: ["Manajemen idola pria tampan", "Koreografi pertunjukan 3D", "Sistem lagu dan ketukan irama", "Skenario drama penuh emosi"]
+  },
+  {
+    id: "rope",
+    title: "Twisted!",
+    genre: "Puzzle",
+    rating: 4.4,
+    players: "65K+",
+    url: "https://h5.g123.jp/game/rope?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Urai semua tali yang kusut! Uji ketajaman logika Anda dalam memecahkan teka-teki simpul tali dengan fisika tali realistis yang menantang.",
+    features: ["Fisika tali 3D realistis", "Ratusan level teka-teki logika", "Grafis minimalis penuh warna", "Sistem petunjuk pemecahan mandiri"]
+  },
+  {
+    id: "newgate",
+    title: "THE NEW GATE Best Collection",
+    genre: "RPG",
+    rating: 4.7,
+    players: "115K+",
+    url: "https://h5.g123.jp/game/newgate?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Pilih senjatamu dan jadilah petarung terkuat di puncak kejayaan! Berdasarkan light novel legendaris, masuki dunia petualangan tanpa batas.",
+    features: ["Pilihan senjata kustomisasi", "Sistem pertempuran taktis dinamis", "Grafis pertempuran anime indah", "Eksplorasi open-world luas"]
+  },
+  {
+    id: "shakugan",
+    title: "Shakugan no Shana: Blaze Edge",
+    genre: "RPG",
+    rating: 4.8,
+    players: "135K+",
+    url: "https://h5.g123.jp/game/shakugan?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
+    description: "Sang Pemburu Berambut Merah dan Bermata Menyala kembali beraksi! Bantu Shana mengalahkan pasukan Guze no Tomogara dan jaga keseimbangan dunia.",
+    features: ["Sistem tebasan api legendaris", "Karya seni visual novel orisinal", "Skenario adaptasi Shana epik", "Pertarungan tim real-time aktif"]
+  },
+  {
+    id: "nouka",
+    title: "Farming Life in Another World Reverie",
+    genre: "Simulation",
+    rating: 4.7,
+    players: "105K+",
+    url: "https://h5.g123.jp/game/nouka?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
+    description: "Kehidupan impianmu yang nyaman menanti! Garap lahan pertanian subur, rekrut para peri dan gadis monster manis, serta bangun desa makmur.",
+    features: ["Mekanisme bertani mendalam", "Pembangunan desa kustomisasi", "Karakter penuh kehangatan manis", "Otomatisasi pengumpulan panen"]
+  },
+  {
+    id: "reinna",
+    title: "Petals of Reincarnation BLOOM",
+    genre: "RPG",
+    rating: 4.6,
+    players: "90K+",
+    url: "https://h5.g123.jp/game/reinna?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2024/10/1729820501430.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1729820508963.jpg",
+    description: "Kalahkan musuh tangguh dengan bakat para tokoh sejarah dunia legendaris yang bereinkarnasi dalam RPG pertempuran faksi penuh aksi!",
+    features: ["Koleksi reinkarnator tokoh dunia", "Sistem upgrade skill khusus", "Grafis pertempuran spektakuler", "Alur cerita konfrontasi taktis"]
+  },
+  {
+    id: "skeleton",
+    title: "Skeleton Knight in Another World SKULL BRAVE",
+    genre: "RPG",
+    rating: 4.7,
+    players: "112K+",
+    url: "https://h5.g123.jp/game/skeleton?lang=en",
+    image: "https://platform-ik.g123.jp/admin/2021/12/1639979135018.jpg",
+    banner: "https://platform-ik.g123.jp/admin/2024/10/1728551410262.jpg",
+    description: "Pertempuran penyelamatan dunia yang memukau bersama Arc sang Ksatria Tengkorak perkasa dan Ponta yang imut di dunia fantasi isekai!",
+    features: ["Aksi ksatria berbaju zirah", "Pelihara Ponta yang menggemaskan", "Eksplorasi labirin berbahaya", "Efek visual sihir dahsyat"]
   }
 ];
