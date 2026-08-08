@@ -1,4 +1,4 @@
-// State
+// State variables
 let currentGenre = "All";
 let searchQuery = "";
 
@@ -19,7 +19,7 @@ const modalFeatures = document.getElementById("modal-features");
 const btnPlayPopup = document.getElementById("btn-play-popup");
 const btnPlayTab = document.getElementById("btn-play-tab");
 
-// Initialize on load
+// Initialize on page load
 document.addEventListener("DOMContentLoaded", () => {
   if (window.lucide) {
     window.lucide.createIcons();
@@ -62,9 +62,8 @@ function updateSidebarActiveState() {
   });
 }
 
-// Render Games Grid
+// Render Games Grid (Compact cards matching CrazyGames style rules)
 function renderGames() {
-  // Clear Grid
   gamesGrid.innerHTML = "";
 
   // Filter games based on genre and search query
@@ -74,60 +73,56 @@ function renderGames() {
     return matchesGenre && matchesSearch;
   });
 
-  // Update count text
-  gameCountText.textContent = `Menampilkan ${filteredGames.length} Game`;
+  gameCountText.textContent = `${filteredGames.length} Game Tersedia`;
 
   if (filteredGames.length === 0) {
     gamesGrid.innerHTML = `
       <div class="col-span-full py-16 flex flex-col items-center justify-center text-center">
-        <div class="w-14 h-14 rounded-full bg-slate-900/60 flex items-center justify-center border border-slate-800 text-slate-400 mb-4 animate-bounce">
+        <div class="w-12 h-12 rounded-full bg-slate-900/60 flex items-center justify-center border border-slate-800 text-slate-400 mb-4 animate-bounce">
           <i data-lucide="frown" class="w-6 h-6"></i>
         </div>
-        <p class="text-base font-bold text-slate-300">Game tidak ditemukan</p>
-        <p class="text-xs text-slate-500 mt-1">Gunakan kata kunci pencarian atau kategori menu lainnya.</p>
+        <p class="text-sm font-bold text-slate-300">Tidak ada game ditemukan</p>
+        <p class="text-[11px] text-slate-500 mt-1">Gunakan kata kunci pencarian atau kategori menu lainnya.</p>
       </div>
     `;
     if (window.lucide) window.lucide.createIcons();
     return;
   }
 
-  // Generate game cards
-  filteredGames.forEach(game => {
+  // Generate compact game cards (CrazyGames aspect ratio 1:1 image boxes)
+  filteredGames.forEach((game, index) => {
     const card = document.createElement("div");
-    card.className = "game-card rounded-2xl overflow-hidden cursor-pointer flex flex-col group h-full";
+    card.className = "crazy-card flex flex-col relative aspect-[4/3] sm:aspect-square overflow-hidden";
     card.setAttribute("onclick", `openGameDetails("${game.id}")`);
 
-    // Safe error image handling to avoid fallback/fails
+    // Dynamic Badge logic (e.g. Hot, New, Top) to enrich CrazyGames feel
+    let badgeHtml = "";
+    if (index % 3 === 0) {
+      badgeHtml = `<span class="crazy-badge crazy-badge-hot">Hot</span>`;
+    } else if (index % 5 === 1) {
+      badgeHtml = `<span class="crazy-badge crazy-badge-new">New</span>`;
+    } else if (index % 4 === 2) {
+      badgeHtml = `<span class="crazy-badge crazy-badge-top">Top</span>`;
+    }
+
     const defaultThumbnail = "https://g123.jp/news/calendar-date-range.svg";
 
     card.innerHTML = `
       <!-- Thumbnail with Overlay -->
-      <div class="relative h-44 w-full overflow-hidden bg-slate-900/50 flex items-center justify-center border-b border-slate-800/40">
+      <div class="w-full h-full relative overflow-hidden bg-slate-900 flex items-center justify-center">
+        ${badgeHtml}
         <img src="${game.image}" alt="${game.title}"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-350"
-          onerror="this.onerror=null; this.src='${defaultThumbnail}'; this.style.objectFit='contain'; this.style.padding='20px';"
+          class="w-full h-full object-cover transition-transform duration-300"
+          onerror="this.onerror=null; this.src='${defaultThumbnail}'; this.style.objectFit='contain'; this.style.padding='16px';"
         >
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0e1017] to-transparent opacity-40"></div>
-        <div class="absolute top-3 right-3 z-10 bg-[#161824]/90 backdrop-blur px-2.5 py-1 rounded-lg text-xs font-bold text-yellow-400 flex items-center gap-1 border border-slate-800">
-          <i data-lucide="star" class="w-3.5 h-3.5 fill-yellow-400"></i> ${game.rating}
-        </div>
-      </div>
-
-      <!-- Content -->
-      <div class="p-5 flex-grow flex flex-col justify-between">
-        <div>
-          <div class="text-[10px] font-bold text-indigo-400 tracking-wider uppercase mb-1.5">${game.genre}</div>
-          <h3 class="text-base font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors line-clamp-1">${game.title}</h3>
-          <p class="text-slate-400 text-xs leading-relaxed line-clamp-2 mb-4">${game.description}</p>
-        </div>
-
-        <div class="flex items-center justify-between pt-4 border-t border-slate-800 mt-auto">
-          <div class="text-[11px] font-mono text-slate-500">
-            <span class="text-indigo-400 font-semibold">${game.players}</span> ONLINE
+        <!-- Overlay on Hover -->
+        <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-3 opacity-0 hover:opacity-100 transition-opacity duration-200 z-20">
+          <h4 class="text-xs font-black text-white line-clamp-1 mb-1">${game.title}</h4>
+          <p class="text-[10px] text-slate-400 leading-normal line-clamp-2 mb-2">${game.description}</p>
+          <div class="flex items-center justify-between text-[9px] font-bold text-slate-400 border-t border-slate-800 pt-1.5">
+            <span class="text-yellow-400 flex items-center gap-0.5"><i data-lucide="star" class="w-2.5 h-2.5 fill-yellow-400"></i> ${game.rating}</span>
+            <span class="text-indigo-400">${game.genre}</span>
           </div>
-          <span class="text-xs font-bold text-indigo-400 group-hover:text-indigo-300 flex items-center gap-1 transition-all">
-            Play Game <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
-          </span>
         </div>
       </div>
     `;
@@ -203,7 +198,7 @@ function closeModal() {
   gameModal.classList.remove("modal-transition-show");
   setTimeout(() => {
     gameModal.classList.add("hidden");
-  }, 250);
+  }, 200);
 }
 
 // Close Modal on clicking outside
