@@ -5,7 +5,6 @@ let searchQuery = "";
 // DOM Elements
 const gamesGrid = document.getElementById("games-grid");
 const searchInput = document.getElementById("search-input");
-const searchBtn = document.getElementById("search-btn");
 const gameCountText = document.getElementById("game-count");
 
 // Modal Elements
@@ -93,10 +92,16 @@ function renderGames() {
     card.className = "glass-card rounded-2xl overflow-hidden cursor-pointer flex flex-col group h-full";
     card.setAttribute("onclick", `openGameDetails("${game.id}")`);
 
+    // Safe error image handling to avoid fallback/fails
+    const defaultThumbnail = "https://g123.jp/news/calendar-date-range.svg";
+
     card.innerHTML = `
       <!-- Thumbnail with Overlay -->
-      <div class="relative h-48 w-full overflow-hidden">
-        <img src="${game.image}" alt="${game.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+      <div class="relative h-48 w-full overflow-hidden bg-slate-900/60 flex items-center justify-center">
+        <img src="${game.image}" alt="${game.title}"
+          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          onerror="this.onerror=null; this.src='${defaultThumbnail}'; this.style.objectFit='contain'; this.style.padding='20px';"
+        >
         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a16] to-transparent opacity-60"></div>
         <div class="absolute bottom-3 left-3 z-10 flex items-center gap-1.5">
           <span class="bg-black/60 backdrop-blur px-2.5 py-1 rounded text-xs font-mono text-cyan-400 border border-cyan-400/20">${game.genre}</span>
@@ -113,7 +118,7 @@ function renderGames() {
           <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">${game.description}</p>
         </div>
 
-        <div class="flex items-center justify-between pt-4 border-t border-gray-900 mt-auto">
+        <div class="flex items-center justify-between pt-4 border-t border-t-gray-800/60 mt-auto">
           <div class="text-[11px] font-mono text-gray-500">
             <span class="text-cyan-400">${game.players}</span> PLAYING
           </div>
@@ -137,7 +142,13 @@ function openGameDetails(gameId) {
   const game = gamesData.find(g => g.id === gameId);
   if (!game) return;
 
+  const defaultBanner = "https://platform-ik.g123.jp/g123/production-ctw-box/game-box/preview/dc54f171c99b83294c0849c40fa328b33e206b783e549f846d6dcfcc.jpg";
+
   // Set modal elements
+  modalBanner.onerror = function() {
+    this.onerror = null;
+    this.src = defaultBanner;
+  };
   modalBanner.src = game.banner;
   modalGenre.textContent = game.genre;
   modalTitle.textContent = game.title;
@@ -162,20 +173,16 @@ function openGameDetails(gameId) {
   }
 
   // Setup Launcher Actions
-  // Method 1: Standalone Popup Window (Locks size, hides menus, bypassed iframe defense!)
   btnPlayPopup.onclick = () => {
     const width = 1100;
     const height = 750;
     const left = (screen.width - width) / 2;
     const top = (screen.height - height) / 2;
-
-    // Popup options to make it look like a standalone application window
     const options = `width=${width},height=${height},top=${top},left=${left},menubar=no,toolbar=no,location=no,status=no,resizable=yes,scrollbars=yes`;
     window.open(game.url, `G123_Standalone_${game.id}`, options);
     closeModal();
   };
 
-  // Method 2: Normal Tab Mode
   btnPlayTab.onclick = () => {
     window.open(game.url, "_blank");
     closeModal();
