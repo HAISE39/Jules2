@@ -19,11 +19,12 @@ const modalFeatures = document.getElementById("modal-features");
 const btnPlayPopup = document.getElementById("btn-play-popup");
 const btnPlayTab = document.getElementById("btn-play-tab");
 
-// Initialize Lucide Icons on load
+// Initialize on load
 document.addEventListener("DOMContentLoaded", () => {
   if (window.lucide) {
     window.lucide.createIcons();
   }
+  updateSidebarActiveState();
   renderGames();
 });
 
@@ -36,17 +37,7 @@ searchInput.addEventListener("input", (e) => {
 // Filter by genre
 function filterGenre(genre) {
   currentGenre = genre;
-
-  // Update Tab buttons styles
-  const tabs = document.querySelectorAll(".genre-tab");
-  tabs.forEach(tab => {
-    if (tab.getAttribute("data-genre") === genre) {
-      tab.classList.add("bg-cyan-500/10", "text-cyan-400", "border-cyan-500/30", "shadow-[0_0_10px_rgba(0,240,255,0.15)]");
-    } else {
-      tab.classList.remove("bg-cyan-500/10", "text-cyan-400", "border-cyan-500/30", "shadow-[0_0_10px_rgba(0,240,255,0.15)]");
-    }
-  });
-
+  updateSidebarActiveState();
   renderGames();
 }
 
@@ -55,6 +46,20 @@ function resetFilters() {
   searchInput.value = "";
   searchQuery = "";
   filterGenre("All");
+}
+
+// Update sidebar buttons visual active states
+function updateSidebarActiveState() {
+  const tabs = document.querySelectorAll(".genre-tab");
+  tabs.forEach(tab => {
+    if (tab.getAttribute("data-genre") === currentGenre) {
+      tab.classList.add("sidebar-active");
+      tab.classList.remove("text-slate-400");
+    } else {
+      tab.classList.remove("sidebar-active");
+      tab.classList.add("text-slate-400");
+    }
+  });
 }
 
 // Render Games Grid
@@ -75,11 +80,11 @@ function renderGames() {
   if (filteredGames.length === 0) {
     gamesGrid.innerHTML = `
       <div class="col-span-full py-16 flex flex-col items-center justify-center text-center">
-        <div class="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/20 text-red-400 mb-4 animate-bounce">
-          <i data-lucide="frown" class="w-8 h-8"></i>
+        <div class="w-14 h-14 rounded-full bg-slate-900/60 flex items-center justify-center border border-slate-800 text-slate-400 mb-4 animate-bounce">
+          <i data-lucide="frown" class="w-6 h-6"></i>
         </div>
-        <p class="text-lg font-bold text-gray-300">Game tidak ditemukan</p>
-        <p class="text-sm text-gray-500 mt-1">Coba gunakan kata kunci pencarian atau genre lain.</p>
+        <p class="text-base font-bold text-slate-300">Game tidak ditemukan</p>
+        <p class="text-xs text-slate-500 mt-1">Gunakan kata kunci pencarian atau kategori menu lainnya.</p>
       </div>
     `;
     if (window.lucide) window.lucide.createIcons();
@@ -89,7 +94,7 @@ function renderGames() {
   // Generate game cards
   filteredGames.forEach(game => {
     const card = document.createElement("div");
-    card.className = "glass-card rounded-2xl overflow-hidden cursor-pointer flex flex-col group h-full";
+    card.className = "game-card rounded-2xl overflow-hidden cursor-pointer flex flex-col group h-full";
     card.setAttribute("onclick", `openGameDetails("${game.id}")`);
 
     // Safe error image handling to avoid fallback/fails
@@ -97,33 +102,31 @@ function renderGames() {
 
     card.innerHTML = `
       <!-- Thumbnail with Overlay -->
-      <div class="relative h-48 w-full overflow-hidden bg-slate-900/60 flex items-center justify-center">
+      <div class="relative h-44 w-full overflow-hidden bg-slate-900/50 flex items-center justify-center border-b border-slate-800/40">
         <img src="${game.image}" alt="${game.title}"
-          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-350"
           onerror="this.onerror=null; this.src='${defaultThumbnail}'; this.style.objectFit='contain'; this.style.padding='20px';"
         >
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a16] to-transparent opacity-60"></div>
-        <div class="absolute bottom-3 left-3 z-10 flex items-center gap-1.5">
-          <span class="bg-black/60 backdrop-blur px-2.5 py-1 rounded text-xs font-mono text-cyan-400 border border-cyan-400/20">${game.genre}</span>
-        </div>
-        <div class="absolute top-3 right-3 z-10 bg-black/60 backdrop-blur px-2.5 py-1 rounded-full text-xs font-semibold text-yellow-400 flex items-center gap-1 border border-yellow-400/20">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0e1017] to-transparent opacity-40"></div>
+        <div class="absolute top-3 right-3 z-10 bg-[#161824]/90 backdrop-blur px-2.5 py-1 rounded-lg text-xs font-bold text-yellow-400 flex items-center gap-1 border border-slate-800">
           <i data-lucide="star" class="w-3.5 h-3.5 fill-yellow-400"></i> ${game.rating}
         </div>
       </div>
 
       <!-- Content -->
-      <div class="p-6 flex-grow flex flex-col justify-between">
+      <div class="p-5 flex-grow flex flex-col justify-between">
         <div>
-          <h3 class="text-lg font-bold mb-2 group-hover:text-cyan-400 transition-colors line-clamp-1">${game.title}</h3>
-          <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">${game.description}</p>
+          <div class="text-[10px] font-bold text-indigo-400 tracking-wider uppercase mb-1.5">${game.genre}</div>
+          <h3 class="text-base font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors line-clamp-1">${game.title}</h3>
+          <p class="text-slate-400 text-xs leading-relaxed line-clamp-2 mb-4">${game.description}</p>
         </div>
 
-        <div class="flex items-center justify-between pt-4 border-t border-t-gray-800/60 mt-auto">
-          <div class="text-[11px] font-mono text-gray-500">
-            <span class="text-cyan-400">${game.players}</span> PLAYING
+        <div class="flex items-center justify-between pt-4 border-t border-slate-800 mt-auto">
+          <div class="text-[11px] font-mono text-slate-500">
+            <span class="text-indigo-400 font-semibold">${game.players}</span> ONLINE
           </div>
-          <span class="text-xs font-bold text-cyan-400 group-hover:text-cyan-300 flex items-center gap-1 transition-all">
-            Play Game <i data-lucide="chevron-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          <span class="text-xs font-bold text-indigo-400 group-hover:text-indigo-300 flex items-center gap-1 transition-all">
+            Play Game <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
           </span>
         </div>
       </div>
@@ -160,9 +163,9 @@ function openGameDetails(gameId) {
   modalFeatures.innerHTML = "";
   game.features.forEach(feat => {
     const li = document.createElement("li");
-    li.className = "flex items-start gap-2 text-xs text-gray-400";
+    li.className = "flex items-start gap-2 text-xs text-slate-400";
     li.innerHTML = `
-      <i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 shrink-0 mt-0.5"></i>
+      <i data-lucide="check-circle" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i>
       <span>${feat}</span>
     `;
     modalFeatures.appendChild(li);
@@ -191,16 +194,16 @@ function openGameDetails(gameId) {
   // Show Modal
   gameModal.classList.remove("hidden");
   setTimeout(() => {
-    gameModal.classList.remove("opacity-0");
+    gameModal.classList.add("modal-transition-show");
   }, 10);
 }
 
 // Close Modal
 function closeModal() {
-  gameModal.classList.add("opacity-0");
+  gameModal.classList.remove("modal-transition-show");
   setTimeout(() => {
     gameModal.classList.add("hidden");
-  }, 300);
+  }, 250);
 }
 
 // Close Modal on clicking outside
