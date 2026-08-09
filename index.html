@@ -12,8 +12,8 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Google Fonts Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- Google Sign-In Client ID Meta Tag -->
-  <meta name="google-signin-client_id" content="455873203632-v8rdf2i32ejf5e1l2vc4tjsdkp69i8qe.apps.googleusercontent.com">
+  <!-- Google Sign-In Client ID Meta Tag (BARU) -->
+  <meta name="google-signin-client_id" content="875255322050-l6sqcav2c8nd5184m2vqoprffu4shnto.apps.googleusercontent.com">
 </head>
 <body class="min-h-screen text-[#f5f6f7] flex flex-col font-sans antialiased bg-[#0b0c10]">
 
@@ -212,24 +212,23 @@
   <!-- Scripts -->
   <script src="js/games.js"></script>
   <script src="js/app.js"></script>
+
   <!-- Firebase Auth & Google Login integration -->
   <script type="module">
-    // 1. PERBAIKAN: Gunakan versi Firebase yang valid (contoh: 10.13.0)
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-    import { getAuth, signInWithPopup, signInWithRedirect, getRedirectResult, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 
+    // Konfigurasi Project Baru: my-admin-panel-vellixao
     const firebaseConfig = {
-      apiKey: "AIzaSyDXL0n6lk24RWyI-Hl2BF1O77CSxKsMgeg",
-      authDomain: "call-of-duty-5b269.firebaseapp.com",
-      databaseURL: "https://call-of-duty-5b269-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "call-of-duty-5b269",
-      storageBucket: "call-of-duty-5b269.firebasestorage.app",
-      messagingSenderId: "455873203632",
-      appId: "1:455873203632:web:ea0d543e042a9c77259a75", // Pastikan ini Web App ID, bukan Android App ID
-      measurementId: "G-543WB2Q88P"
+      apiKey: "AIzaSyCAb9BoLNwl61Mqrz07CtMvCY_wERVEark",
+      authDomain: "my-admin-panel-vellixao.firebaseapp.com",
+      databaseURL: "https://my-admin-panel-vellixao-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "my-admin-panel-vellixao",
+      storageBucket: "my-admin-panel-vellixao.appspot.com",
+      messagingSenderId: "875255322050",
+      appId: "1:875255322050:web:27d5cff4663d0e5dedf25b"
     };
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
@@ -237,40 +236,43 @@
     const authContainer = document.getElementById("auth-container");
     const bannerHeading = document.getElementById("banner-heading");
 
-    // 2. PERBAIKAN: Deteksi hasil login jika menggunakan Redirect (Penting untuk HP/WebView)
-    getRedirectResult(auth).then((result) => {
-      if (result) {
-        console.log("Login Redirect Berhasil", result.user);
+    const renderLoginButton = () => {
+      if (bannerHeading) {
+        bannerHeading.textContent = "Mulai Petualangan Game Anime Instan Tanpa Hambatan!";
       }
-    }).catch((error) => {
-      console.error("Error Redirect Auth", error);
-    });
-
-    // Expose login/logout methods globally
-    window.loginWithGoogle = () => {
-      // 3. PERBAIKAN: Gunakan signInWithRedirect jika targetnya Mobile/WebView.
-      // Jika murni Desktop Browser, signInWithPopup bisa digunakan.
-      // Kita gunakan try-catch agar jika error, Anda bisa melihat alert-nya.
-      try {
-        // Ubah ke signInWithPopup(auth, provider) jika bukan untuk WebView
-        signInWithRedirect(auth, provider);
-      } catch (error) {
-        console.error("Auth trigger error", error);
-        alert("Gagal memanggil login: " + error.message);
-      }
+      authContainer.innerHTML = `
+        <button onclick="window.loginWithGoogle()" class="bg-[#7c3aed] hover:bg-[#6d28d9] text-white text-xs font-bold px-4 py-2 rounded-full transition-all flex items-center gap-1.5 shadow-[0_0_12px_rgba(124,58,237,0.3)]">
+          <i data-lucide="log-in" class="w-3.5 h-3.5"></i> Login Google
+        </button>
+      `;
+      if (window.lucide) window.lucide.createIcons();
     };
 
-    window.logout = () => {
-      signOut(auth)
-        .then(() => {
-          console.log("Logged out successfully");
+    window.loginWithGoogle = () => {
+      authContainer.innerHTML = `
+        <div class="bg-[#1e2030] text-[#7c3aed] border border-[#7c3aed]/50 text-xs font-bold px-4 py-2 rounded-full flex items-center gap-2">
+          <i data-lucide="loader-2" class="w-3.5 h-3.5 animate-spin"></i> Memproses...
+        </div>
+      `;
+      if (window.lucide) window.lucide.createIcons();
+
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          console.log("Login Sukses:", result.user);
         })
         .catch((error) => {
-          console.error("Logout error", error);
+          console.error("Firebase Auth Error:", error);
+          renderLoginButton();
+          alert("GAGAL LOGIN (" + error.code + "):\n" + error.message);
         });
     };
 
-    // Listen to Auth State Changes
+    window.logout = () => {
+      signOut(auth).catch((error) => {
+        console.error("Logout error", error);
+      });
+    };
+
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const displayName = user.displayName || "Gamer";
@@ -293,25 +295,14 @@
             </div>
 
             <!-- Logout button -->
-            <button onclick="window.logout()" class="text-[10px] bg-red-500/20 hover:bg-red-500/30 hover:scale-105 active:scale-95 text-red-400 font-extrabold px-3 py-1 rounded-full transition-all flex items-center gap-1.5 border border-red-500/30">
+            <button onclick="window.logout()" title="Keluar" class="text-[10px] bg-red-500/20 hover:bg-red-500/30 hover:scale-105 active:scale-95 text-red-400 font-extrabold px-3 py-1 rounded-full transition-all flex items-center gap-1.5 border border-red-500/30">
               <i data-lucide="log-out" class="w-3 h-3"></i> Keluar
             </button>
           </div>
         `;
+        if (window.lucide) window.lucide.createIcons();
       } else {
-        if (bannerHeading) {
-          bannerHeading.textContent = "Mulai Petualangan Game Anime Instan Tanpa Hambatan!";
-        }
-
-        authContainer.innerHTML = `
-          <button onclick="window.loginWithGoogle()" class="bg-[#7c3aed] hover:bg-[#6d28d9] text-white text-xs font-bold px-4 py-2 rounded-full transition-all flex items-center gap-1.5 shadow-[0_0_12px_rgba(124,58,237,0.3)]">
-            <i data-lucide="log-in" class="w-3.5 h-3.5"></i> Login Google
-          </button>
-        `;
-      }
-
-      if (window.lucide) {
-        window.lucide.createIcons();
+        renderLoginButton();
       }
     });
   </script>
