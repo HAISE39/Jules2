@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrazyGames G123 - Main Game Gratis Terbaik</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom CSS Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Google Sign-In Client ID Meta Tag (BARU) -->
+  <meta name="google-signin-client_id" content="875255322050-l6sqcav2c8nd5184m2vqoprffu4shnto.apps.googleusercontent.com">
+</head>
+<body class="min-h-screen text-[#f5f6f7] flex flex-col font-sans antialiased bg-[#0b0c10]">
+
+  <!-- CrazyGames Styled Top Navigation -->
+  <header class="h-14 bg-[#14151f] border-b border-[#20212e] sticky top-0 z-50 flex items-center justify-between px-4">
+    <!-- Left Logo Section -->
+    <div class="flex items-center gap-3 cursor-pointer" onclick="resetFilters()">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#7c3aed] to-[#bf5af2] flex items-center justify-center shadow-[0_0_12px_rgba(124,58,237,0.4)]">
+        <i data-lucide="gamepad-2" class="w-5 h-5 text-white"></i>
+      </div>
+      <div class="flex items-baseline gap-1">
+        <span class="text-xl font-black tracking-tight text-white">Crazy<span class="text-[#7c3aed]">Games</span></span>
+        <span class="text-[9px] bg-[#2a2c3d] text-slate-300 px-1.5 py-0.5 rounded font-mono uppercase tracking-wider">G123</span>
+      </div>
+    </div>
+
+    <!-- Search Input in Navigation (CrazyGames style) -->
+    <div class="relative w-full max-w-md mx-4 hidden md:block">
+      <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Cari game seru..."
+        class="w-full bg-[#1e2030] border border-[#2d2f44] rounded-full py-1.5 pl-10 pr-4 text-xs focus:outline-none focus:border-[#7c3aed] focus:ring-1 focus:ring-[#7c3aed] transition-all text-slate-200 placeholder-slate-500"
+      >
+    </div>
+
+    <!-- Right Side badging and Google Auth -->
+    <div class="flex items-center gap-3 text-xs">
+      <div class="bg-[#2a2c3d]/60 border border-[#3b3e54] text-[#bf5af2] px-3 py-1.5 rounded-full font-bold flex items-center gap-1.5 hidden sm:flex">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#bf5af2] animate-pulse"></span>
+        DIRECT POPUP ACTIVE
+      </div>
+      <!-- Firebase Auth Container -->
+      <div id="auth-container" class="flex items-center gap-2">
+        <!-- Will be dynamically populated by Firebase auth state -->
+        <div class="animate-pulse bg-[#1e2030] h-8 w-24 rounded-full"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Side-by-Side Content Workspace -->
+  <div class="flex flex-1">
+
+    <!-- CrazyGames left-hand icon sidebar navigation -->
+    <aside class="w-60 bg-[#14151f] border-r border-[#20212e] p-3 flex flex-col justify-between shrink-0 hidden lg:flex">
+      <div class="space-y-1">
+        <!-- Main items -->
+        <button
+          onclick="filterGenre('All')"
+          class="genre-tab w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#1e2030] transition-all"
+          data-genre="All"
+        >
+          <i data-lucide="home" class="w-4 h-4 shrink-0"></i> Home
+        </button>
+        <button
+          onclick="filterGenre('RPG')"
+          class="genre-tab w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#1e2030] transition-all"
+          data-genre="RPG"
+        >
+          <i data-lucide="shield" class="w-4 h-4 shrink-0"></i> RPG
+        </button>
+        <button
+          onclick="filterGenre('Strategy')"
+          class="genre-tab w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#1e2030] transition-all"
+          data-genre="Strategy"
+        >
+          <i data-lucide="swords" class="w-4 h-4 shrink-0"></i> Strategy
+        </button>
+        <button
+          onclick="filterGenre('Simulation')"
+          class="genre-tab w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#1e2030] transition-all"
+          data-genre="Simulation"
+        >
+          <i data-lucide="heart" class="w-4 h-4 shrink-0"></i> Simulation
+        </button>
+        <button
+          onclick="filterGenre('Puzzle')"
+          class="genre-tab w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#1e2030] transition-all"
+          data-genre="Puzzle"
+        >
+          <i data-lucide="brain" class="w-4 h-4 shrink-0"></i> Puzzle
+        </button>
+
+        <p class="pt-4 px-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Official platform</p>
+        <a href="https://g123.jp" target="_blank" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#1e2030] transition-all">
+          <i data-lucide="external-link" class="w-4 h-4 shrink-0"></i> Go to G123.jp
+        </a>
+      </div>
+
+      <!-- Small footer branding -->
+      <div class="pt-4 border-t border-[#20212e] text-[10px] text-slate-500 font-mono px-3">
+        © 2026 CrazyGames G123
+      </div>
+    </aside>
+
+    <!-- Main View Area (CrazyGames Style Grid) -->
+    <main class="flex-1 min-w-0 p-4 md:p-6 overflow-y-auto">
+
+      <!-- CrazyGames Banner Space -->
+      <div class="w-full h-44 md:h-60 rounded-2xl overflow-hidden relative mb-6 shadow-xl bg-gradient-to-r from-[#201c3d] to-[#12131a] flex items-center px-8 md:px-12 border border-[#2a2c3d]">
+        <div class="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none" style="background-image: url('https://platform-ik.g123.jp/g123/production-ctw-box/game-box/preview/dc54f171c99b83294c0849c40fa328b33e206b783e549f846d6dcfcc.jpg');"></div>
+        <div class="relative z-10 max-w-lg">
+          <span class="bg-[#7c3aed] text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Trending</span>
+          <h2 id="banner-heading" class="text-xl md:text-3xl font-black text-white mt-2 leading-tight">Mulai Petualangan Game Anime Instan Tanpa Hambatan!</h2>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Mainkan game G123 berlisensi resmi dengan lancar. Kami memotong pembatasan iframe G123 dengan metode luncuran jendela popup / tab mandiri modern.
+          </p>
+        </div>
+      </div>
+
+      <!-- Category Filter fallback on small device screens -->
+      <div class="flex lg:hidden flex-wrap items-center gap-1.5 mb-6" id="genre-tabs">
+        <button onclick="filterGenre('All')" class="genre-tab bg-[#14151f] hover:bg-[#1e2030] text-slate-400 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all border border-[#20212e]" data-genre="All">Semua</button>
+        <button onclick="filterGenre('RPG')" class="genre-tab bg-[#14151f] hover:bg-[#1e2030] text-slate-400 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all border border-[#20212e]" data-genre="RPG">RPG</button>
+        <button onclick="filterGenre('Strategy')" class="genre-tab bg-[#14151f] hover:bg-[#1e2030] text-slate-400 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all border border-[#20212e]" data-genre="Strategy">Strategy</button>
+        <button onclick="filterGenre('Simulation')" class="genre-tab bg-[#14151f] hover:bg-[#1e2030] text-slate-400 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all border border-[#20212e]" data-genre="Simulation">Simulation</button>
+        <button onclick="filterGenre('Puzzle')" class="genre-tab bg-[#14151f] hover:bg-[#1e2030] text-slate-400 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all border border-[#20212e]" data-genre="Puzzle">Puzzle</button>
+      </div>
+
+      <!-- CrazyGames Styled Grid Header -->
+      <div class="mb-4 flex items-baseline justify-between gap-4">
+        <h3 class="text-sm font-black text-slate-100 uppercase tracking-wider flex items-center gap-2">
+          <i data-lucide="zap" class="w-4 h-4 text-[#bf5af2] fill-[#bf5af2]"></i>
+          Featured Games
+        </h3>
+        <span class="text-xs font-bold text-slate-500" id="game-count">-- Game Tersedia</span>
+      </div>
+
+      <!-- Games Grid (CrazyGames Style aspect ratio card slots) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4" id="games-grid">
+        <!-- Dynamic listings generated by app.js -->
+      </div>
+    </main>
+  </div>
+
+  <!-- CrazyGames Interactive Game Details Overlay Modal -->
+  <div id="game-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
+    <div class="bg-[#14151f] max-w-lg w-full rounded-2xl overflow-hidden border border-[#20212e] shadow-2xl relative max-h-[90vh] flex flex-col">
+      <!-- Modal Close cross -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/60 border border-[#2a2c3d] text-slate-400 hover:text-white flex items-center justify-center transition-all">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Modal Core Scroll Area -->
+      <div class="overflow-y-auto flex-grow">
+        <!-- Banner display -->
+        <div class="relative h-44 sm:h-52 w-full bg-[#0b0c10]">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#14151f] to-transparent z-10"></div>
+          <img id="modal-banner" src="" alt="Banner" class="w-full h-full object-cover">
+          <div class="absolute bottom-4 left-6 z-20">
+            <span id="modal-genre" class="bg-[#7c3aed]/20 border border-[#7c3aed]/40 text-[#a5b4fc] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">RPG</span>
+          </div>
+        </div>
+
+        <!-- Specifications content -->
+        <div class="p-6">
+          <h3 id="modal-title" class="text-lg font-black text-white mb-2">Title</h3>
+
+          <div class="flex items-center gap-4 text-xs font-mono text-slate-400 mb-4 pb-4 border-b border-[#20212e]">
+            <span class="flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"></i> <strong id="modal-rating">4.8</strong></span>
+            <span class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5 text-[#bf5af2]"></i> <strong id="modal-players">120K+</strong> Active</span>
+          </div>
+
+          <p id="modal-description" class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">Deskripsi game...</p>
+
+          <h4 class="text-xs font-bold tracking-wider text-[#bf5af2] uppercase mb-2.5 flex items-center gap-1.5">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Fitur Utama Game
+          </h4>
+          <ul id="modal-features" class="space-y-1.5 text-xs text-slate-400 mb-6 list-none">
+            <!-- Dynamically generated list -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Action launching buttons footer -->
+      <div class="p-5 bg-[#1a1b29]/50 border-t border-[#20212e] flex flex-col sm:flex-row gap-2.5">
+        <button
+          id="btn-play-popup"
+          class="flex-1 bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-extrabold py-3 px-5 rounded-xl flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(124,58,237,0.3)]"
+        >
+          <i data-lucide="play" class="w-4 h-4 fill-white shrink-0"></i>
+          Play Game (Popup)
+        </button>
+        <button
+          id="btn-play-tab"
+          class="flex-1 bg-[#20212e] hover:bg-[#2c2e3f] text-slate-300 border border-[#2d2f44] font-bold py-3 px-5 rounded-xl flex items-center justify-center gap-2 transition-all"
+        >
+          <i data-lucide="external-link" class="w-4 h-4 shrink-0"></i>
+          Buka Tab Baru
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/games.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Firebase Auth & Google Login integration -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+
+    // Konfigurasi Project Baru: my-admin-panel-vellixao
+    const firebaseConfig = {
+      apiKey: "AIzaSyCAb9BoLNwl61Mqrz07CtMvCY_wERVEark",
+      authDomain: "my-admin-panel-vellixao.firebaseapp.com",
+      databaseURL: "https://my-admin-panel-vellixao-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "my-admin-panel-vellixao",
+      storageBucket: "my-admin-panel-vellixao.appspot.com",
+      messagingSenderId: "875255322050",
+      appId: "1:875255322050:web:27d5cff4663d0e5dedf25b"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    const authContainer = document.getElementById("auth-container");
+    const bannerHeading = document.getElementById("banner-heading");
+
+    const renderLoginButton = () => {
+      if (bannerHeading) {
+        bannerHeading.textContent = "Mulai Petualangan Game Anime Instan Tanpa Hambatan!";
+      }
+      authContainer.innerHTML = `
+        <button onclick="window.loginWithGoogle()" class="bg-[#7c3aed] hover:bg-[#6d28d9] text-white text-xs font-bold px-4 py-2 rounded-full transition-all flex items-center gap-1.5 shadow-[0_0_12px_rgba(124,58,237,0.3)]">
+          <i data-lucide="log-in" class="w-3.5 h-3.5"></i> Login Google
+        </button>
+      `;
+      if (window.lucide) window.lucide.createIcons();
+    };
+
+    window.loginWithGoogle = () => {
+      authContainer.innerHTML = `
+        <div class="bg-[#1e2030] text-[#7c3aed] border border-[#7c3aed]/50 text-xs font-bold px-4 py-2 rounded-full flex items-center gap-2">
+          <i data-lucide="loader-2" class="w-3.5 h-3.5 animate-spin"></i> Memproses...
+        </div>
+      `;
+      if (window.lucide) window.lucide.createIcons();
+
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          console.log("Login Sukses:", result.user);
+        })
+        .catch((error) => {
+          console.error("Firebase Auth Error:", error);
+          renderLoginButton();
+          alert("GAGAL LOGIN (" + error.code + "):\n" + error.message);
+        });
+    };
+
+    window.logout = () => {
+      signOut(auth).catch((error) => {
+        console.error("Logout error", error);
+      });
+    };
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const displayName = user.displayName || "Gamer";
+        const photoURL = user.photoURL || "https://g123.jp/news/calendar-date-range.svg";
+        const email = user.email || "";
+
+        if (bannerHeading) {
+          bannerHeading.textContent = `Halo, ${displayName}! Siap untuk Petualangan Game Anime Instan?`;
+        }
+
+        authContainer.innerHTML = `
+          <div class="flex items-center gap-3 bg-[#14151f]/80 backdrop-blur-md border border-[#2d2f44] pl-2 pr-3 py-1.5 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+            <!-- Gmail Profile Photo -->
+            <img src="${photoURL}" alt="${displayName}" referrerpolicy="no-referrer" class="w-8 h-8 rounded-full object-cover border-2 border-[#7c3aed] shadow-md">
+
+            <!-- User Name and Email details -->
+            <div class="flex flex-col min-w-0 max-w-[120px] sm:max-w-[160px]">
+              <span class="text-xs font-bold text-slate-100 truncate leading-tight">${displayName}</span>
+              ${email ? `<span class="text-[9px] text-slate-400 font-medium truncate leading-none mt-0.5">${email}</span>` : ""}
+            </div>
+
+            <!-- Logout button -->
+            <button onclick="window.logout()" title="Keluar" class="text-[10px] bg-red-500/20 hover:bg-red-500/30 hover:scale-105 active:scale-95 text-red-400 font-extrabold px-3 py-1 rounded-full transition-all flex items-center gap-1.5 border border-red-500/30">
+              <i data-lucide="log-out" class="w-3 h-3"></i> Keluar
+            </button>
+          </div>
+        `;
+        if (window.lucide) window.lucide.createIcons();
+      } else {
+        renderLoginButton();
+      }
+    });
+  </script>
+</body>
+</html>

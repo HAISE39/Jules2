@@ -1,0 +1,92 @@
+/* Reset & Clean Base variables matching CrazyGames purple styling */
+:root {
+  --primary-color: #7c3aed; /* Violet */
+  --slate-bg: #0b0c10;
+  --slate-header: #14151f;
+  --slate-border: #20212e;
+}
+
+body {
+  background-color: var(--slate-bg);
+  color: #f1f5f9;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--slate-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252836;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* CrazyGames sidebar active state styling */
+.sidebar-active {
+  background-color: #1e2030 !important;
+  color: #fff !important;
+  border-left: 3px solid var(--primary-color);
+  border-radius: 0 8px 8px 0 !important;
+  padding-left: 9px !important;
+}
+
+/* Compact Card layout configurations */
+.crazy-card {
+  background-color: var(--slate-header);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.crazy-card:hover {
+  transform: scale(1.04);
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.6), 0 0 12px rgba(124, 58, 237, 0.15);
+  z-index: 10;
+}
+
+/* Vivid top status flags on game thumbnails (CrazyGames Style) */
+.crazy-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  z-index: 10;
+}
+
+.crazy-badge-hot {
+  background-color: #ef4444; /* Red */
+}
+
+.crazy-badge-new {
+  background-color: #3b82f6; /* Blue */
+}
+
+.crazy-badge-top {
+  background-color: #eab308; /* Yellow */
+}
+
+/* Modal visibility utilities */
+.modal-transition-show {
+  opacity: 1 !important;
+}
