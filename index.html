@@ -39,11 +39,16 @@
       >
     </div>
 
-    <!-- Right Side badging -->
+    <!-- Right Side badging and Google Auth -->
     <div class="flex items-center gap-3 text-xs">
-      <div class="bg-[#2a2c3d]/60 border border-[#3b3e54] text-[#bf5af2] px-3 py-1.5 rounded-full font-bold flex items-center gap-1.5">
+      <div class="bg-[#2a2c3d]/60 border border-[#3b3e54] text-[#bf5af2] px-3 py-1.5 rounded-full font-bold flex items-center gap-1.5 hidden sm:flex">
         <span class="w-2.5 h-2.5 rounded-full bg-[#bf5af2] animate-pulse"></span>
         DIRECT POPUP ACTIVE
+      </div>
+      <!-- Firebase Auth Container -->
+      <div id="auth-container" class="flex items-center gap-2">
+        <!-- Will be dynamically populated by Firebase auth state -->
+        <div class="animate-pulse bg-[#1e2030] h-8 w-24 rounded-full"></div>
       </div>
     </div>
   </header>
@@ -111,7 +116,7 @@
         <div class="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none" style="background-image: url('https://platform-ik.g123.jp/g123/production-ctw-box/game-box/preview/dc54f171c99b83294c0849c40fa328b33e206b783e549f846d6dcfcc.jpg');"></div>
         <div class="relative z-10 max-w-lg">
           <span class="bg-[#7c3aed] text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Trending</span>
-          <h2 class="text-xl md:text-3xl font-black text-white mt-2 leading-tight">Mulai Petualangan Game Anime Instan Tanpa Hambatan!</h2>
+          <h2 id="banner-heading" class="text-xl md:text-3xl font-black text-white mt-2 leading-tight">Mulai Petualangan Game Anime Instan Tanpa Hambatan!</h2>
           <p class="text-xs text-slate-400 mt-2 leading-relaxed">
             Mainkan game G123 berlisensi resmi dengan lancar. Kami memotong pembatasan iframe G123 dengan metode luncuran jendela popup / tab mandiri modern.
           </p>
@@ -205,5 +210,93 @@
   <!-- Scripts -->
   <script src="js/games.js"></script>
   <script src="js/app.js"></script>
+
+  <!-- Firebase Auth & Google Login integration -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "xxxxxxx",
+      authDomain: "call-of-duty-5b269.firebaseapp.com",
+      databaseURL: "https://call-of-duty-5b269-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "call-of-duty-5b269",
+      storageBucket: "call-of-duty-5b269.firebasestorage.app",
+      messagingSenderId: "455873203632",
+      appId: "1:455873203632:web:ea0d543e042a9c77259a75",
+      measurementId: "G-543WB2Q88P"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    const authContainer = document.getElementById("auth-container");
+    const bannerHeading = document.getElementById("banner-heading");
+
+    // Expose login/logout methods globally for HTML elements
+    window.loginWithGoogle = () => {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          console.log("Logged in successfully", result.user);
+        })
+        .catch((error) => {
+          console.error("Auth error", error);
+        });
+    };
+
+    window.logout = () => {
+      signOut(auth)
+        .then(() => {
+          console.log("Logged out successfully");
+        })
+        .catch((error) => {
+          console.error("Logout error", error);
+        });
+    };
+
+    // Listen to Auth State Changes
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        const displayName = user.displayName || "Gamer";
+        const photoURL = user.photoURL || "https://g123.jp/news/calendar-date-range.svg";
+
+        // Update banner heading personalized greet
+        if (bannerHeading) {
+          bannerHeading.textContent = `Halo, ${displayName}! Siap untuk Petualangan Game Anime Instan?`;
+        }
+
+        // Update auth-container in top nav
+        authContainer.innerHTML = `
+          <div class="flex items-center gap-2 bg-[#1e2030] border border-[#2d2f44] pl-2 pr-3 py-1.5 rounded-full">
+            <img src="${photoURL}" alt="${displayName}" class="w-5 h-5 rounded-full object-cover border border-[#7c3aed]/50">
+            <span class="text-xs font-semibold text-slate-200 max-w-[80px] sm:max-w-[100px] truncate">${displayName}</span>
+            <button onclick="window.logout()" class="text-[10px] bg-red-500/20 hover:bg-red-500/30 text-red-400 font-bold px-2 py-0.5 rounded-full transition-all flex items-center gap-1">
+              <i data-lucide="log-out" class="w-3 h-3"></i> Keluar
+            </button>
+          </div>
+        `;
+      } else {
+        // User is signed out
+        if (bannerHeading) {
+          bannerHeading.textContent = "Mulai Petualangan Game Anime Instan Tanpa Hambatan!";
+        }
+
+        // Update auth-container to show sign in button
+        authContainer.innerHTML = `
+          <button onclick="window.loginWithGoogle()" class="bg-[#7c3aed] hover:bg-[#6d28d9] text-white text-xs font-bold px-4 py-2 rounded-full transition-all flex items-center gap-1.5 shadow-[0_0_12px_rgba(124,58,237,0.3)]">
+            <i data-lucide="log-in" class="w-3.5 h-3.5"></i> Login Google
+          </button>
+        `;
+      }
+
+      // Re-initialize Lucide Icons for dynamic element markup
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
 </body>
 </html>
