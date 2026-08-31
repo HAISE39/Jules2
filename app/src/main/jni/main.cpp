@@ -528,7 +528,12 @@ void BeginDrawWithAnimation() {
         case 1: // Memory Hack
             ImGui::Text("Memory Scan Feature (Game Guardian Style)");
             ImGui::Separator();
-            ImGui::Checkbox("Reset CD (3;81;20:9 -> 25)", &enableResetCD);
+            ImGui::Text("Trigger GG Recipe: 3;81;20:9 -> Edit 25");
+            if (ImGui::Button("Trigger Reset CD Once")) {
+                ResetCD::Run();
+            }
+            ImGui::Separator();
+            ImGui::Checkbox("Auto Freeze Reset CD (Continuous)", &enableResetCD);
             if (enableResetCD) {
                 ResetCD::Loop(enableResetCD);
             }
