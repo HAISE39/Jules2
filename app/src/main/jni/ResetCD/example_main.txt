@@ -1,0 +1,17 @@
+// Contoh integrasi ResetCD ke menu ImGui (salin ke dalam main.cpp proyek Anda)
+//
+// 1) Include di bagian atas main.cpp:
+// #include "ResetCD/ResetCD.h"
+//
+// 2) Deklarasi toggle global:
+// static bool enableResetCD = false;
+//
+// 3) Di dalam BeginDrawWithAnimation(), tambahkan pada salah satu tab:
+// ImGui::Checkbox("Reset CD (3;81;20:9 -> 25)", &enableResetCD);
+// if (enableResetCD) {
+//     ResetCD::Run();          // jalankan sekali per frame selama toggle menyala
+// }
+// // atau gunakan Loop() yang otomatis menjalankan Run() hanya jika enabled:
+// ResetCD::Loop(enableResetCD);
+
+#include "ResetCD/ResetCD.h"

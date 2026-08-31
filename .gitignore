@@ -1,0 +1,15 @@
+.gradle/
+.idea/
+build/
+app/build/
+app/src/main/obj/
+*.so
+*.o
+*.d
+app/src/main/obj/
+app/build/
+.gradle/
+.idea/
+*.o
+*.d
+*.so
